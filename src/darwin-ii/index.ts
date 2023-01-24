@@ -13,6 +13,27 @@ interface OriginOrDestinationLocation{
     unreachable: null | boolean
 }
 
+interface CallingPointLocation{
+    // The display name of this location.
+    locationName: null | string 
+    // The CRS code of this location. A CRS code of ??? indicates an error situation where no crs code is known for this location.
+    crs: null | string 
+    // The scheduled time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list.
+    st: null | string 
+    // The estimated time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an actual time (at) is not present.
+    et?: null | string 
+    // The actual time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an estimated time (et) is not present.
+    at?: null | string 
+    // A flag to indicate that this service is cancelled at this location.
+    isCancelled?: null | boolean 
+    // The train length (number of units) at this location. If not supplied, or zero, the length is unknown.
+    length?: null | number
+    // True if the service detaches units from the front at this location.
+    detachFront?: null | boolean
+    // A list of Adhoc Alerts (strings) for this CallingPoint.
+    adhocAlerts?: null | string[] 
+}
+
 interface TrainService{
     serviceID: null | string
     eta: null | string
@@ -24,15 +45,9 @@ interface TrainService{
     operatorCode: null | string
     origins: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     destinations: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
-
-    //TODO diagram for this
     callingPoints: {
-        main: {
-            next: [],
-            prior: []
-        },
-        //TODO how to suss this out?
-        other: {}
+        next: CallingPointLocation[],
+        prior: CallingPointLocation[],
     }
 }
 

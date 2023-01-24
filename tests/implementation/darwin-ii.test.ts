@@ -63,7 +63,22 @@ describe('Darwin-II Implementation', () => {
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
-            //TODO write this
+            expect(trainService).toHaveProperty('callingPoints')
+            expect(trainService.callingPoints).toHaveProperty('next')
+            expect(trainService.callingPoints).toHaveProperty('prior')
+
+            expect(Array.isArray(trainService.callingPoints.next)).toBe(true)
+            expect(Array.isArray(trainService.callingPoints.prior)).toBe(true)
+
+            const allPoints = [
+                ...trainService.callingPoints.next,
+                ...trainService.callingPoints.prior,
+            ]
+
+            allPoints.forEach(pointLocation => {
+                expect(true).toBe(false)
+            })
+
         })
     })
 
