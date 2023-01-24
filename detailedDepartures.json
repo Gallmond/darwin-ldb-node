@@ -1,0 +1,706 @@
+{
+  "GetStationBoardResult": {
+    "generatedAt": "2023-01-23T15:03:35.995Z",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "platformAvailable": true,
+    "trainServices": {
+      "service": [
+        {
+          "std": "14:01",
+          "etd": "15:08",
+          "platform": "4",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "delayReason": "This train has been delayed by a fault on this train",
+          "serviceID": "153838NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Aberdeen",
+                "crs": "ABD"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "London Kings Cross",
+                "crs": "KGX"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "14:28",
+                  "et": "15:39"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "14:56",
+                  "et": "16:04"
+                },
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "16:48",
+                  "et": "17:47"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "14:59",
+          "etd": "15:03",
+          "platform": "3",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "serviceID": "153847NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Edinburgh",
+                "crs": "EDB"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "London Kings Cross",
+                "crs": "KGX"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "15:26",
+                  "et": "15:29"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "15:54",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "17:51",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "14:59",
+          "etd": "15:05",
+          "platform": "4",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "2",
+          "serviceID": "167056NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Carlisle",
+                "crs": "CAR"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Morpeth",
+                "crs": "MPT"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Manors",
+                  "crs": "MAS",
+                  "st": "15:01",
+                  "et": "15:07",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Cramlington",
+                  "crs": "CRM",
+                  "st": "15:11",
+                  "et": "15:17",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Morpeth",
+                  "crs": "MPT",
+                  "st": "15:19",
+                  "et": "15:24",
+                  "length": "2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:03",
+          "etd": "On time",
+          "platform": "5",
+          "operator": "TransPennine Express",
+          "operatorCode": "TP",
+          "serviceType": "train",
+          "length": "5",
+          "serviceID": "152987NWCSTLE_",
+          "rsid": "TP513900",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Newcastle",
+                "crs": "NCL"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Liverpool Lime Street",
+                "crs": "LIV"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "15:15",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "15:32",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "16:00",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Leeds",
+                  "crs": "LDS",
+                  "st": "16:27",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Huddersfield",
+                  "crs": "HUD",
+                  "st": "16:47",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Manchester Victoria",
+                  "crs": "MCV",
+                  "st": "17:22",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Newton-le-Willows",
+                  "crs": "NLW",
+                  "st": "17:40",
+                  "et": "On time",
+                  "length": "5"
+                },
+                {
+                  "locationName": "Liverpool Lime Street",
+                  "crs": "LIV",
+                  "st": "17:59",
+                  "et": "On time",
+                  "length": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:17",
+          "etd": "On time",
+          "platform": "2",
+          "operator": "Lumo",
+          "operatorCode": "LD",
+          "serviceType": "train",
+          "serviceID": "159416NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "London Kings Cross",
+                "crs": "KGX"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Edinburgh",
+                "crs": "EDB"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Morpeth",
+                  "crs": "MPT",
+                  "st": "15:30",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "16:41",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:23",
+          "etd": "On time",
+          "platform": "12",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "2",
+          "cancelReason": "This train has been cancelled because of a shortage of train crew",
+          "delayReason": "This train has been delayed by a shortage of train crew",
+          "serviceID": "179156NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Newcastle",
+                "crs": "NCL"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Carlisle",
+                "crs": "CAR"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Metro Centre",
+                  "crs": "MCE",
+                  "st": "15:30",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Prudhoe",
+                  "crs": "PRU",
+                  "st": "15:41",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Hexham",
+                  "crs": "HEX",
+                  "st": "15:54",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Haltwhistle",
+                  "crs": "HWH",
+                  "st": "16:13",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Carlisle",
+                  "crs": "CAR",
+                  "st": "16:43",
+                  "et": "On time",
+                  "length": "2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:32",
+          "etd": "On time",
+          "platform": "4",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "serviceID": "155455NWCSTLE_",
+          "rsid": "GR554000",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Edinburgh",
+                "crs": "EDB"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "London Kings Cross",
+                "crs": "KGX"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "15:45",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "16:03",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "16:31",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Doncaster",
+                  "crs": "DON",
+                  "st": "16:55",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Newark North Gate",
+                  "crs": "NNG",
+                  "st": "17:18",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Peterborough",
+                  "crs": "PBO",
+                  "st": "17:49",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "18:41",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:37",
+          "etd": "On time",
+          "platform": "2",
+          "operator": "CrossCountry",
+          "operatorCode": "XC",
+          "serviceType": "train",
+          "serviceID": "166502NWCSTLE_",
+          "rsid": "XC112000",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Bristol Temple Meads",
+                "crs": "BRI"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Glasgow Central",
+                "crs": "GLC"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Alnmouth",
+                  "crs": "ALM",
+                  "st": "16:01",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Berwick-upon-Tweed",
+                  "crs": "BWK",
+                  "st": "16:23",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "17:06",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Haymarket",
+                  "crs": "HYM",
+                  "st": "17:16",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Motherwell",
+                  "crs": "MTH",
+                  "st": "17:56",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Glasgow Central",
+                  "crs": "GLC",
+                  "st": "18:13",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:39",
+          "etd": "On time",
+          "platform": "4",
+          "operator": "CrossCountry",
+          "operatorCode": "XC",
+          "serviceType": "train",
+          "serviceID": "166375NWCSTLE_",
+          "rsid": "XC175000",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Edinburgh",
+                "crs": "EDB"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Bristol Temple Meads",
+                "crs": "BRI",
+                "via": "via Leeds"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "15:50",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "16:08",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "16:36",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Leeds",
+                  "crs": "LDS",
+                  "st": "17:08",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Wakefield Westgate",
+                  "crs": "WKF",
+                  "st": "17:22",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Sheffield",
+                  "crs": "SHF",
+                  "st": "17:54",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Chesterfield",
+                  "crs": "CHD",
+                  "st": "18:07",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Derby",
+                  "crs": "DBY",
+                  "st": "18:26",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Tamworth",
+                  "crs": "TAM",
+                  "st": "18:48",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Birmingham New Street",
+                  "crs": "BHM",
+                  "st": "19:06",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Cheltenham Spa",
+                  "crs": "CNM",
+                  "st": "19:50",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Bristol Parkway",
+                  "crs": "BPW",
+                  "st": "20:20",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Bristol Temple Meads",
+                  "crs": "BRI",
+                  "st": "20:32",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "15:40",
+          "etd": "On time",
+          "platform": "6",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "2",
+          "serviceID": "167031NWCSTLE_",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Newcastle",
+                "crs": "NCL"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Carlisle",
+                "crs": "CAR"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Metro Centre",
+                  "crs": "MCE",
+                  "st": "15:47",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Prudhoe",
+                  "crs": "PRU",
+                  "st": "15:58",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Hexham",
+                  "crs": "HEX",
+                  "st": "16:11",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Haydon Bridge",
+                  "crs": "HDB",
+                  "st": "16:21",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Haltwhistle",
+                  "crs": "HWH",
+                  "st": "16:32",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Brampton (Cumbria)",
+                  "crs": "BMP",
+                  "st": "16:47",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Wetheral",
+                  "crs": "WRL",
+                  "st": "16:56",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Carlisle",
+                  "crs": "CAR",
+                  "st": "17:07",
+                  "et": "On time",
+                  "length": "2"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

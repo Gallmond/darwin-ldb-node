@@ -1,0 +1,14 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "cSpell.words": [
+      "nrcc",
+      "RSID"
+    ],
+    "cSpell.ignoreWords": [
+      "assoc",
+      "filtercrs"
+    ]
+}
+  

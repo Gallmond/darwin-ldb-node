@@ -1,0 +1,1833 @@
+{
+  "GetStationBoardResult": {
+    "generatedAt": "2023-01-23T21:57:29.694Z",
+    "locationName": "Gatwick Airport",
+    "crs": "GTW",
+    "nrccMessages": {
+      "message": [
+        "<p>\nThe lifts are out of order between platforms 5 &amp; 6 and the main concourse at Gatwick Airport station.</p>",
+        "Trains running between East Croydon and Clapham Junction may be cancelled or delayed by up to 60 minutes. More details can be found in <a href=\"http://nationalrail.co.uk/service_disruptions/316288.aspx\">Latest Travel News</a>",
+        "Trains running through Redhill may be cancelled or delayed by up to 30 minutes. More details can be found in <a href=\"www.nationalrail.co.uk/service_disruptions/316296.aspx\">Latest Travel News</a>."
+      ]
+    },
+    "platformAvailable": true,
+    "trainServices": {
+      "service": [
+        {
+          "sta": "20:53",
+          "eta": "22:00",
+          "std": "20:56",
+          "platform": "4",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "serviceType": "train",
+          "length": "8",
+          "cancelReason": "This train has been cancelled because of the emergency services dealing with an incident",
+          "delayReason": "This train has been delayed by the emergency services dealing with an incident",
+          "serviceID": "166435GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Littlehampton",
+                "crs": "LIT"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Gatwick Airport",
+                "crs": "GTW"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Littlehampton",
+                  "crs": "LIT",
+                  "st": "19:43",
+                  "at": "20:44",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Angmering",
+                  "crs": "ANG",
+                  "st": "19:52",
+                  "at": "20:54",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Goring-by-Sea",
+                  "crs": "GBS",
+                  "st": "19:56",
+                  "at": "20:58",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Durrington-on-Sea",
+                  "crs": "DUR",
+                  "st": "19:59",
+                  "at": "21:01",
+                  "length": "8"
+                },
+                {
+                  "locationName": "West Worthing",
+                  "crs": "WWO",
+                  "st": "20:01",
+                  "at": "21:03",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Worthing",
+                  "crs": "WRH",
+                  "st": "20:04",
+                  "at": "21:06",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Lancing",
+                  "crs": "LAC",
+                  "st": "20:08",
+                  "at": "21:10",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Shoreham-by-Sea",
+                  "crs": "SSE",
+                  "st": "20:13",
+                  "at": "21:14",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Portslade",
+                  "crs": "PLD",
+                  "st": "20:17",
+                  "at": "21:18",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hove",
+                  "crs": "HOV",
+                  "st": "20:21",
+                  "at": "21:24",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Preston Park",
+                  "crs": "PRP",
+                  "st": "20:26",
+                  "at": "21:28",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hassocks",
+                  "crs": "HSK",
+                  "st": "20:32",
+                  "at": "21:35",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "20:36",
+                  "at": "21:38",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "20:42",
+                  "at": "21:44",
+                  "length": "8"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:11",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "21:21",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "21:28",
+                  "et": "Cancelled",
+                  "length": "8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:09",
+          "eta": "22:10",
+          "std": "21:13",
+          "etd": "22:11",
+          "platform": "2",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "serviceType": "train",
+          "length": "12",
+          "cancelReason": "This train has been cancelled because of the emergency services dealing with an incident earlier today",
+          "delayReason": "This train has been delayed by the emergency services dealing with an incident earlier today",
+          "serviceID": "165956GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Barnham",
+                "crs": "BAA"
+              },
+              {
+                "locationName": "Southampton Central",
+                "crs": "SOU"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "East Croydon",
+                "crs": "ECR"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": [
+              {
+                "attributes": {
+                  "assocIsCancelled": "true"
+                },
+                "callingPoint": [
+                  {
+                    "locationName": "Bognor Regis",
+                    "crs": "BOG",
+                    "st": "19:56",
+                    "at": "Cancelled",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Barnham",
+                    "crs": "BAA",
+                    "st": "20:03",
+                    "at": "21:10",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Ford",
+                    "crs": "FOD",
+                    "st": "20:07",
+                    "at": "21:16",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Arundel",
+                    "crs": "ARU",
+                    "st": "20:13",
+                    "at": "21:20",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Amberley",
+                    "crs": "AMY",
+                    "st": "20:17",
+                    "at": "21:26",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Pulborough",
+                    "crs": "PUL",
+                    "st": "20:24",
+                    "at": "21:32",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Billingshurst",
+                    "crs": "BIG",
+                    "st": "20:31",
+                    "at": "21:40",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Christs Hospital",
+                    "crs": "CHH",
+                    "st": "20:37",
+                    "at": "21:46",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Horsham",
+                    "crs": "HRH",
+                    "st": "20:50",
+                    "at": "21:51",
+                    "length": "12"
+                  },
+                  {
+                    "locationName": "Crawley",
+                    "crs": "CRW",
+                    "st": "20:59",
+                    "et": "22:01",
+                    "length": "12"
+                  },
+                  {
+                    "locationName": "Three Bridges",
+                    "crs": "TBD",
+                    "st": "21:05",
+                    "et": "22:06",
+                    "length": "12"
+                  }
+                ]
+              },
+              {
+                "attributes": {
+                  "assocIsCancelled": "true"
+                },
+                "callingPoint": [
+                  {
+                    "locationName": "Southampton Central",
+                    "crs": "SOU",
+                    "st": "19:12",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Swanwick",
+                    "crs": "SNW",
+                    "st": "19:32",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Fareham",
+                    "crs": "FRM",
+                    "st": "19:39",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Portchester",
+                    "crs": "PTC",
+                    "st": "19:44",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Cosham",
+                    "crs": "CSA",
+                    "st": "19:48",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Havant",
+                    "crs": "HAV",
+                    "st": "19:55",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Emsworth",
+                    "crs": "EMS",
+                    "st": "19:58",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Southbourne",
+                    "crs": "SOB",
+                    "st": "20:01",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Chichester",
+                    "crs": "CCH",
+                    "st": "20:09",
+                    "at": "On time",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Barnham",
+                    "crs": "BAA",
+                    "st": "20:16",
+                    "at": "20:21",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Horsham",
+                    "crs": "HRH",
+                    "st": "20:50",
+                    "et": "Cancelled",
+                    "length": "4"
+                  }
+                ]
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:28",
+                  "et": "22:26",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "21:37",
+                  "et": "Cancelled",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "21:45",
+                  "et": "Cancelled",
+                  "length": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:28",
+          "eta": "22:03",
+          "std": "21:32",
+          "etd": "22:04",
+          "platform": "4",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "serviceType": "train",
+          "length": "8",
+          "cancelReason": "This train has been cancelled because of the emergency services dealing with an incident",
+          "delayReason": "This train has been delayed by fire brigade dealing with an incident",
+          "serviceID": "166166GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Haywards Heath",
+                "crs": "HHE"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "London Victoria",
+                "crs": "VIC"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Eastbourne",
+                  "crs": "EBN",
+                  "st": "20:33",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hampden Park",
+                  "crs": "HMD",
+                  "st": "20:37",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Polegate",
+                  "crs": "PLG",
+                  "st": "20:42",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Lewes",
+                  "crs": "LWS",
+                  "st": "20:55",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Cooksbridge",
+                  "crs": "CBR",
+                  "st": "21:00",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Wivelsfield",
+                  "crs": "WVF",
+                  "st": "21:11",
+                  "at": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "21:17",
+                  "at": "21:51",
+                  "length": "8"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:48",
+                  "et": "22:20",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "21:58",
+                  "et": "22:30",
+                  "length": "8"
+                },
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "22:06",
+                  "et": "22:38",
+                  "length": "8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:35",
+          "eta": "21:55",
+          "std": "21:36",
+          "etd": "21:57",
+          "platform": "4",
+          "operator": "Thameslink",
+          "operatorCode": "TL",
+          "serviceType": "train",
+          "length": "12",
+          "delayReason": "This train has been delayed by a points failure",
+          "serviceID": "173641GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Brighton",
+                "crs": "BTN"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Bedford",
+                "crs": "BDM",
+                "via": "via London Bridge"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Brighton",
+                  "crs": "BTN",
+                  "st": "20:58",
+                  "at": "21:16",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Preston Park",
+                  "crs": "PRP",
+                  "st": "21:02",
+                  "at": "21:21",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Hassocks",
+                  "crs": "HSK",
+                  "st": "21:08",
+                  "at": "21:28",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "21:12",
+                  "at": "21:30",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Wivelsfield",
+                  "crs": "WVF",
+                  "st": "21:14",
+                  "at": "21:34",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "21:19",
+                  "at": "21:38",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Balcombe",
+                  "crs": "BAB",
+                  "st": "21:25",
+                  "at": "21:43",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Three Bridges",
+                  "crs": "TBD",
+                  "st": "21:31",
+                  "at": "21:51",
+                  "length": "12"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:51",
+                  "et": "22:11",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Bridge",
+                  "crs": "LBG",
+                  "st": "22:05",
+                  "et": "22:24",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Blackfriars",
+                  "crs": "BFR",
+                  "st": "22:11",
+                  "et": "22:30",
+                  "length": "12"
+                },
+                {
+                  "locationName": "City Thameslink",
+                  "crs": "CTK",
+                  "st": "22:13",
+                  "et": "22:32",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Farringdon",
+                  "crs": "ZFD",
+                  "st": "22:16",
+                  "et": "22:35",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London St Pancras (Intl)",
+                  "crs": "STP",
+                  "st": "22:20",
+                  "et": "22:39",
+                  "length": "12"
+                },
+                {
+                  "locationName": "West Hampstead Thameslink",
+                  "crs": "WHP",
+                  "st": "22:29",
+                  "et": "22:47",
+                  "length": "12"
+                },
+                {
+                  "locationName": "St Albans",
+                  "crs": "SAC",
+                  "st": "22:41",
+                  "et": "22:59",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Harpenden",
+                  "crs": "HPD",
+                  "st": "22:47",
+                  "et": "23:05",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Luton Airport Parkway",
+                  "crs": "LTN",
+                  "st": "22:52",
+                  "et": "23:10",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Luton",
+                  "crs": "LUT",
+                  "st": "22:56",
+                  "et": "23:13",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Leagrave",
+                  "crs": "LEA",
+                  "st": "23:01",
+                  "et": "23:17",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Harlington",
+                  "crs": "HLN",
+                  "st": "23:06",
+                  "et": "23:22",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Flitwick",
+                  "crs": "FLT",
+                  "st": "23:10",
+                  "et": "23:26",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Bedford",
+                  "crs": "BDM",
+                  "st": "23:22",
+                  "et": "23:37",
+                  "length": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:38",
+          "eta": "21:56",
+          "std": "21:39",
+          "etd": "21:57",
+          "platform": "6",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "serviceType": "train",
+          "length": "12",
+          "delayReason": "This train has been delayed by fire brigade dealing with an incident",
+          "serviceID": "165958GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "London Victoria",
+                "crs": "VIC"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Portsmouth Harbour",
+                "crs": "PMH",
+                "via": "via Horsham"
+              },
+              {
+                "locationName": "Bognor Regis",
+                "crs": "BOG",
+                "via": "via Horsham"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "21:05",
+                  "at": "21:22",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "21:12",
+                  "at": "21:29",
+                  "length": "12"
+                },
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:23",
+                  "at": "21:41",
+                  "length": "12"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": [
+              {
+                "callingPoint": [
+                  {
+                    "locationName": "Three Bridges",
+                    "crs": "TBD",
+                    "st": "21:44",
+                    "et": "22:01",
+                    "length": "12"
+                  },
+                  {
+                    "locationName": "Crawley",
+                    "crs": "CRW",
+                    "st": "21:48",
+                    "et": "22:04",
+                    "length": "12"
+                  },
+                  {
+                    "locationName": "Horsham",
+                    "crs": "HRH",
+                    "st": "21:57",
+                    "et": "22:13",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Barnham",
+                    "crs": "BAA",
+                    "st": "22:33",
+                    "et": "22:43",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Chichester",
+                    "crs": "CCH",
+                    "st": "22:41",
+                    "et": "22:51",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Southbourne",
+                    "crs": "SOB",
+                    "st": "22:48",
+                    "et": "22:58",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Emsworth",
+                    "crs": "EMS",
+                    "st": "22:51",
+                    "et": "23:01",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Havant",
+                    "crs": "HAV",
+                    "st": "22:55",
+                    "et": "23:04",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Fratton",
+                    "crs": "FTN",
+                    "st": "23:04",
+                    "et": "23:13",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Portsmouth & Southsea",
+                    "crs": "PMS",
+                    "st": "23:07",
+                    "et": "23:16",
+                    "length": "4"
+                  },
+                  {
+                    "locationName": "Portsmouth Harbour",
+                    "crs": "PMH",
+                    "st": "23:11",
+                    "et": "23:20",
+                    "length": "4"
+                  }
+                ]
+              },
+              {
+                "callingPoint": [
+                  {
+                    "locationName": "Horsham",
+                    "crs": "HRH",
+                    "st": "21:57",
+                    "et": "22:18",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Christs Hospital",
+                    "crs": "CHH",
+                    "st": "22:09",
+                    "et": "22:22",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Billingshurst",
+                    "crs": "BIG",
+                    "st": "22:15",
+                    "et": "22:28",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Pulborough",
+                    "crs": "PUL",
+                    "st": "22:21",
+                    "et": "22:34",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Amberley",
+                    "crs": "AMY",
+                    "st": "22:27",
+                    "et": "22:40",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Arundel",
+                    "crs": "ARU",
+                    "st": "22:32",
+                    "et": "22:45",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Ford",
+                    "crs": "FOD",
+                    "st": "22:38",
+                    "et": "22:51",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Barnham",
+                    "crs": "BAA",
+                    "st": "22:42",
+                    "et": "22:55",
+                    "length": "8"
+                  },
+                  {
+                    "locationName": "Bognor Regis",
+                    "crs": "BOG",
+                    "st": "22:50",
+                    "et": "23:02",
+                    "length": "8"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sta": "21:44",
+          "eta": "21:59",
+          "std": "21:45",
+          "etd": "22:00",
+          "platform": "7",
+          "operator": "Thameslink",
+          "operatorCode": "TL",
+          "serviceType": "train",
+          "length": "12",
+          "cancelReason": "This train has been cancelled because of a points failure",
+          "delayReason": "This train has been delayed by a points failure",
+          "serviceID": "173524GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Cambridge",
+                "crs": "CBG"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Brighton",
+                "crs": "BTN"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Cambridge",
+                  "crs": "CBG",
+                  "st": "19:54",
+                  "at": "20:05",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Royston",
+                  "crs": "RYS",
+                  "st": "20:09",
+                  "at": "20:21",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Baldock",
+                  "crs": "BDK",
+                  "st": "20:17",
+                  "at": "20:31",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Letchworth Garden City",
+                  "crs": "LET",
+                  "st": "20:21",
+                  "at": "20:34",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Hitchin",
+                  "crs": "HIT",
+                  "st": "20:26",
+                  "at": "20:39",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Stevenage",
+                  "crs": "SVG",
+                  "st": "20:32",
+                  "at": "20:44",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Finsbury Park",
+                  "crs": "FPK",
+                  "st": "20:52",
+                  "at": "21:08",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London St Pancras (Intl)",
+                  "crs": "STP",
+                  "st": "21:00",
+                  "at": "21:14",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Farringdon",
+                  "crs": "ZFD",
+                  "st": "21:04",
+                  "at": "21:19",
+                  "length": "12"
+                },
+                {
+                  "locationName": "City Thameslink",
+                  "crs": "CTK",
+                  "st": "21:06",
+                  "at": "21:22",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Blackfriars",
+                  "crs": "BFR",
+                  "st": "21:09",
+                  "at": "21:23",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Bridge",
+                  "crs": "LBG",
+                  "st": "21:15",
+                  "at": "21:29",
+                  "length": "12"
+                },
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:29",
+                  "at": "21:45",
+                  "length": "12"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Three Bridges",
+                  "crs": "TBD",
+                  "st": "21:49",
+                  "et": "22:03",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "21:59",
+                  "et": "22:13",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "22:05",
+                  "et": "22:18",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Hassocks",
+                  "crs": "HSK",
+                  "st": "22:07",
+                  "et": "22:21"
+                },
+                {
+                  "locationName": "Preston Park",
+                  "crs": "PRP",
+                  "st": "22:13",
+                  "et": "22:26"
+                },
+                {
+                  "locationName": "Brighton",
+                  "crs": "BTN",
+                  "st": "22:18",
+                  "et": "22:31",
+                  "length": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:45",
+          "eta": "21:59",
+          "std": "21:46",
+          "etd": "22:00",
+          "platform": "4",
+          "operator": "Thameslink",
+          "operatorCode": "TL",
+          "serviceType": "train",
+          "length": "12",
+          "delayReason": "This train has been delayed by the emergency services dealing with an incident",
+          "serviceID": "155859GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Brighton",
+                "crs": "BTN"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Cambridge",
+                "crs": "CBG"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Brighton",
+                  "crs": "BTN",
+                  "st": "21:14",
+                  "at": "21:20",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "21:25",
+                  "at": "21:33",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "21:31",
+                  "at": "21:41",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Three Bridges",
+                  "crs": "TBD",
+                  "st": "21:40",
+                  "at": "21:55",
+                  "length": "12"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "22:01",
+                  "et": "22:14",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Bridge",
+                  "crs": "LBG",
+                  "st": "22:15",
+                  "et": "22:27",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Blackfriars",
+                  "crs": "BFR",
+                  "st": "22:21",
+                  "et": "22:33",
+                  "length": "12"
+                },
+                {
+                  "locationName": "City Thameslink",
+                  "crs": "CTK",
+                  "st": "22:23",
+                  "et": "22:35",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Farringdon",
+                  "crs": "ZFD",
+                  "st": "22:26",
+                  "et": "22:38",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London St Pancras (Intl)",
+                  "crs": "STP",
+                  "st": "22:30",
+                  "et": "22:42",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Finsbury Park",
+                  "crs": "FPK",
+                  "st": "22:37",
+                  "et": "22:48",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Welwyn Garden City",
+                  "crs": "WGC",
+                  "st": "22:54",
+                  "et": "23:05",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Welwyn North",
+                  "crs": "WLW",
+                  "st": "22:58",
+                  "et": "23:09",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Knebworth",
+                  "crs": "KBW",
+                  "st": "23:02",
+                  "et": "23:13",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Stevenage",
+                  "crs": "SVG",
+                  "st": "23:07",
+                  "et": "23:17",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Hitchin",
+                  "crs": "HIT",
+                  "st": "23:13",
+                  "et": "23:23",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Letchworth Garden City",
+                  "crs": "LET",
+                  "st": "23:19",
+                  "et": "23:28",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Baldock",
+                  "crs": "BDK",
+                  "st": "23:22",
+                  "et": "23:31",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Ashwell & Morden",
+                  "crs": "AWM",
+                  "st": "23:27",
+                  "et": "23:36",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Royston",
+                  "crs": "RYS",
+                  "st": "23:31",
+                  "et": "23:40",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Cambridge",
+                  "crs": "CBG",
+                  "st": "23:47",
+                  "et": "23:55",
+                  "length": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:47",
+          "eta": "21:56",
+          "std": "21:49",
+          "etd": "21:57",
+          "platform": "3",
+          "operator": "Thameslink",
+          "operatorCode": "TL",
+          "serviceType": "train",
+          "length": "12",
+          "cancelReason": "This train has been cancelled because of a points failure",
+          "delayReason": "This train has been delayed by a points failure",
+          "serviceID": "172902GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Peterborough",
+                "crs": "PBO"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Horsham",
+                "crs": "HRH"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Peterborough",
+                  "crs": "PBO",
+                  "st": "19:24",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Huntingdon",
+                  "crs": "HUN",
+                  "st": "19:40",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "St Neots",
+                  "crs": "SNO",
+                  "st": "19:48",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Sandy",
+                  "crs": "SDY",
+                  "st": "19:56",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Biggleswade",
+                  "crs": "BIW",
+                  "st": "20:00",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Arlesey",
+                  "crs": "ARL",
+                  "st": "20:05",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Hitchin",
+                  "crs": "HIT",
+                  "st": "20:11",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Stevenage",
+                  "crs": "SVG",
+                  "st": "20:17",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Finsbury Park",
+                  "crs": "FPK",
+                  "st": "20:38",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London St Pancras (Intl)",
+                  "crs": "STP",
+                  "st": "20:45",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Farringdon",
+                  "crs": "ZFD",
+                  "st": "20:49",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "City Thameslink",
+                  "crs": "CTK",
+                  "st": "20:51",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Blackfriars",
+                  "crs": "BFR",
+                  "st": "20:54",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "London Bridge",
+                  "crs": "LBG",
+                  "st": "21:00",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:17",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Purley",
+                  "crs": "PUR",
+                  "st": "21:22",
+                  "at": "Cancelled"
+                },
+                {
+                  "locationName": "Coulsdon South",
+                  "crs": "CDS",
+                  "st": "21:25",
+                  "at": "21:26",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Merstham",
+                  "crs": "MHM",
+                  "st": "21:31",
+                  "at": "On time",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Redhill",
+                  "crs": "RDH",
+                  "st": "21:37",
+                  "at": "21:44",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Horley",
+                  "crs": "HOR",
+                  "st": "21:44",
+                  "at": "21:55",
+                  "length": "12"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Three Bridges",
+                  "crs": "TBD",
+                  "st": "21:54",
+                  "et": "22:02",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Crawley",
+                  "crs": "CRW",
+                  "st": "21:59",
+                  "et": "22:06",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Ifield",
+                  "crs": "IFI",
+                  "st": "22:02",
+                  "et": "22:09",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Littlehaven",
+                  "crs": "LVN",
+                  "st": "22:08",
+                  "et": "22:15",
+                  "length": "12"
+                },
+                {
+                  "locationName": "Horsham",
+                  "crs": "HRH",
+                  "st": "22:12",
+                  "et": "22:19",
+                  "length": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:49",
+          "eta": "22:02",
+          "std": "21:52",
+          "etd": "22:03",
+          "platform": "6",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "serviceType": "train",
+          "length": "8",
+          "delayReason": "This train has been delayed by fire brigade dealing with an incident",
+          "serviceID": "166438GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "London Victoria",
+                "crs": "VIC"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Littlehampton",
+                "crs": "LIT",
+                "via": "via Hove & Worthing"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "21:16",
+                  "at": "21:28",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "21:23",
+                  "at": "21:34",
+                  "length": "8"
+                },
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "21:34",
+                  "at": "21:48",
+                  "length": "8"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "22:02",
+                  "et": "22:13",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "22:09",
+                  "et": "22:19",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hassocks",
+                  "crs": "HSK",
+                  "st": "22:13",
+                  "et": "22:22",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Preston Park",
+                  "crs": "PRP",
+                  "st": "22:20",
+                  "et": "22:29",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hove",
+                  "crs": "HOV",
+                  "st": "22:23",
+                  "et": "22:33",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Portslade",
+                  "crs": "PLD",
+                  "st": "22:27",
+                  "et": "22:36",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Shoreham-by-Sea",
+                  "crs": "SSE",
+                  "st": "22:31",
+                  "et": "22:41",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Worthing",
+                  "crs": "WRH",
+                  "st": "22:38",
+                  "et": "22:47",
+                  "length": "8"
+                },
+                {
+                  "locationName": "West Worthing",
+                  "crs": "WWO",
+                  "st": "22:42",
+                  "et": "22:50",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Durrington-on-Sea",
+                  "crs": "DUR",
+                  "st": "22:45",
+                  "et": "22:52",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Goring-by-Sea",
+                  "crs": "GBS",
+                  "st": "22:47",
+                  "et": "22:55",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Angmering",
+                  "crs": "ANG",
+                  "st": "22:51",
+                  "et": "22:59",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Littlehampton",
+                  "crs": "LIT",
+                  "st": "23:01",
+                  "et": "23:09",
+                  "length": "8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "21:53",
+          "eta": "Cancelled",
+          "std": "21:56",
+          "etd": "Cancelled",
+          "operator": "Southern",
+          "operatorCode": "SN",
+          "isCancelled": true,
+          "serviceType": "train",
+          "length": "8",
+          "cancelReason": "This train has been cancelled because of a person being hit by a train earlier today",
+          "delayReason": "This train has been delayed by fire brigade dealing with an incident",
+          "serviceID": "166450GTWK____",
+          "origin": {
+            "location": [
+              {
+                "locationName": "Littlehampton",
+                "crs": "LIT"
+              }
+            ]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "London Victoria",
+                "crs": "VIC"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Littlehampton",
+                  "crs": "LIT",
+                  "st": "20:43",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Angmering",
+                  "crs": "ANG",
+                  "st": "20:52",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Goring-by-Sea",
+                  "crs": "GBS",
+                  "st": "20:56",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Durrington-on-Sea",
+                  "crs": "DUR",
+                  "st": "20:59",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "West Worthing",
+                  "crs": "WWO",
+                  "st": "21:01",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Worthing",
+                  "crs": "WRH",
+                  "st": "21:04",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Lancing",
+                  "crs": "LAC",
+                  "st": "21:08",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Shoreham-by-Sea",
+                  "crs": "SSE",
+                  "st": "21:13",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Portslade",
+                  "crs": "PLD",
+                  "st": "21:17",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hove",
+                  "crs": "HOV",
+                  "st": "21:21",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Preston Park",
+                  "crs": "PRP",
+                  "st": "21:26",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Hassocks",
+                  "crs": "HSK",
+                  "st": "21:32",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Burgess Hill",
+                  "crs": "BUG",
+                  "st": "21:36",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Haywards Heath",
+                  "crs": "HHE",
+                  "st": "21:42",
+                  "et": "Cancelled",
+                  "length": "8"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "East Croydon",
+                  "crs": "ECR",
+                  "st": "22:11",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Clapham Junction",
+                  "crs": "CLJ",
+                  "st": "22:21",
+                  "et": "Cancelled",
+                  "length": "8"
+                },
+                {
+                  "locationName": "London Victoria",
+                  "crs": "VIC",
+                  "st": "22:28",
+                  "et": "Cancelled",
+                  "length": "8"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

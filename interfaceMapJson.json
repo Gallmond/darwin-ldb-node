@@ -1,0 +1,55 @@
+{
+  "inputType": {
+    "serviceID": "ServiceIDType"
+  },
+  "adhocAlertsType": {
+    "adhocAlertText": "AdhocAlertTextType[]"
+  },
+  "coachType": {
+    "coachClass": "CoachClassType",
+    "toilet": "ToiletType",
+    "loading": "LoadingValue"
+  },
+  "coachesType": {
+    "coach": "coachType[]"
+  },
+  "formationType": {
+    "loadingCategory": "xs:string",
+    "coaches": "coachesType"
+  },
+  "GetServiceDetailsResultType": {
+    "0": "g",
+    "1": "r",
+    "2": "o",
+    "3": "u",
+    "4": "p",
+    "generatedAt": "xs:dateTime",
+    "serviceType": "ServiceType",
+    "locationName": "LocationNameType",
+    "crs": "CRSType",
+    "operator": "TOCName",
+    "operatorCode": "TOCCode",
+    "rsid": "RSIDType",
+    "isCancelled": "xs:boolean",
+    "cancelReason": "xs:string",
+    "delayReason": "xs:string",
+    "overdueMessage": "xs:string",
+    "length": "TrainLength",
+    "detachFront": "xs:boolean",
+    "isReverseFormation": "xs:boolean",
+    "platform": "PlatformType",
+    "sta": "TimeType",
+    "eta": "TimeType",
+    "ata": "TimeType",
+    "std": "TimeType",
+    "etd": "TimeType",
+    "atd": "TimeType",
+    "divertedVia": "xs:string",
+    "diversionReason": "xs:string",
+    "adhocAlerts": "adhocAlertsType",
+    "formation": "formationType"
+  },
+  "outputType": {
+    "GetServiceDetailsResult": "GetServiceDetailsResultType"
+  }
+}
