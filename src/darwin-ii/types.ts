@@ -6,6 +6,30 @@ type CRS = string
 export type Time = string // like '13:45' or 'On time'
 type PlainObj = Record<string, unknown>
 
+export type CallingPointResult = {
+    // The display name of this location.
+    locationName: string
+    // The CRS code of this location. A CRS code of ??? indicates an error situation where no crs code is known for this location.
+    crs: string
+    // The scheduled time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list.
+    st: Time
+    // The estimated time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an actual time (at) is not present.
+    et?: Time
+    // The actual time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an estimated time (et) is not present.
+    at?: Time
+    // A flag to indicate that this service is cancelled at this location.
+    isCancelled?: boolean
+    // The train length (number of units) at this location. If not supplied, or zero, the length is unknown.
+    length?: number
+    // True if the service detaches units from the front at this location.
+    detachFront?: boolean
+    // A list of Adhoc Alerts (strings) for this CallingPoint.
+    adhocAlerts?: string[]
+}
+export type CallingPointWrapperResult = {callingPoint: CallingPointResult | CallingPointResult[]}
+export type CallingPointsListResult = CallingPointWrapperResult | CallingPointWrapperResult[]
+    
+
 export interface ServiceLocationResult{
     // The name of the location.
     locationName?: string  	
@@ -32,6 +56,15 @@ export interface TrainServiceResult{
     destination?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     currentOrigins?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     currentDestinations?: { location?: ServiceLocationResult | ServiceLocationResult[] }
+
+    previousCallingPoints?: {
+        callingPointList: CallingPointsListResult
+    }
+
+    subsequentCallingPoints?: {
+        callingPointList: CallingPointsListResult
+    }
+
 }
 
 interface StationBoardResult{

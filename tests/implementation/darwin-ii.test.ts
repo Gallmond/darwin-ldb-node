@@ -1,9 +1,7 @@
 import SoapConnector from '../../src/darwin-ii/SoapConnector'
 import dotenv from 'dotenv'
-import { type } from 'os'
 import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
-import { executionAsyncId } from 'async_hooks'
 import Darwin from '../../src/darwin-ii'
 
 dotenv.config()
@@ -26,9 +24,9 @@ const getSoapConnector = async (): Promise<SoapConnector> => {
 /**
  * fails if an object has a single undefined value
  */
-const noUndefinedProperties = (object: Object) => {
+const noUndefinedProperties = (object: object) => {
     Object.entries(object).forEach(keyVal => {
-        const [key, val] = keyVal
+        const [, val] = keyVal
 
         // if this property is an object do the same
         if(val !== null && typeof val === 'object'){
@@ -37,8 +35,8 @@ const noUndefinedProperties = (object: Object) => {
 
         // if this property is an array, do the same to each element
         if(Array.isArray(val)){
-            val.forEach(elem => {
-                expect(typeof elem).not.toBe('undefined')
+            val.forEach(element => {
+                expect(typeof element).not.toBe('undefined')
             })
         }
 
@@ -63,20 +61,43 @@ describe('Darwin-II Implementation', () => {
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
+            // check that we got calling points for this service
             expect(trainService).toHaveProperty('callingPoints')
+
+            // every service should have a next and prior array
+            // these can be empty though
+            // for example a service at its destination will have no more calling points
             expect(trainService.callingPoints).toHaveProperty('next')
             expect(trainService.callingPoints).toHaveProperty('prior')
-
             expect(Array.isArray(trainService.callingPoints.next)).toBe(true)
             expect(Array.isArray(trainService.callingPoints.prior)).toBe(true)
 
+            // they should all have the same format, so lets squash them together
             const allPoints = [
                 ...trainService.callingPoints.next,
                 ...trainService.callingPoints.prior,
             ]
 
-            allPoints.forEach(pointLocation => {
-                expect(true).toBe(false)
+            expect(allPoints.length > 0).toBe(true)
+
+            /**
+             * each of these elements is also an array as a service can have
+             * multiple origins or destinations due to train joins and splits
+             * each element is itself an array of points to/from that origin/destination
+             */
+            allPoints.forEach(pointLocations => {
+                expect(Array.isArray( pointLocations )).toBe(true)
+                pointLocations.forEach(pointLocation => {
+                    expect(pointLocation).toHaveProperty('locationName')
+                    expect(pointLocation).toHaveProperty('crs')
+                    expect(pointLocation).toHaveProperty('st')
+                    expect(pointLocation).toHaveProperty('et')
+                    expect(pointLocation).toHaveProperty('at')
+                    expect(pointLocation).toHaveProperty('isCancelled')
+                    expect(pointLocation).toHaveProperty('length')
+                    expect(pointLocation).toHaveProperty('detachFront')
+                    expect(pointLocation).toHaveProperty('adhocAlerts')
+                })
             })
 
         })

@@ -1,5 +1,5 @@
 import { arrayWrap } from '../utils'
-import { ConnectorInterface, HasConnector, PlainObj, ServiceLocationResult, StationBoardInput, StationBoardResult, TrainServiceResult } from './types'
+import { CallingPointResult, CallingPointWrapperResult, ConnectorInterface, HasConnector, PlainObj, ServiceLocationResult, StationBoardInput, StationBoardResult, TrainServiceResult } from './types'
 
 /**
  * These types define what we WANT.
@@ -46,8 +46,8 @@ interface TrainService{
     origins: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     destinations: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     callingPoints: {
-        next: CallingPointLocation[],
-        prior: CallingPointLocation[],
+        next: CallingPointLocation[][],
+        prior: CallingPointLocation[][],
     }
 }
 
@@ -85,7 +85,7 @@ class Darwin implements HasConnector{
         throw new Error('Failed to parse response')
     }
 
-    private formatTrainServiceOriginAndDestination(service: TrainServiceResult){
+    private formatTrainServiceEndpoints(service: TrainServiceResult){
 
         const originArray = arrayWrap<ServiceLocationResult>( service.origin?.location )
         const destinationArray = arrayWrap<ServiceLocationResult>( service.destination?.location )
@@ -117,6 +117,37 @@ class Darwin implements HasConnector{
         }
     }
 
+    private formatTrainServiceCallingPoints(service: TrainServiceResult){
+        
+        const formatPointsGeneric = (dataArray: CallingPointWrapperResult[]) => {
+            return dataArray.map(element =>{
+                const data = arrayWrap<CallingPointResult>( element.callingPoint )
+                return data.map(datum => {
+                    return {
+                        locationName: datum.locationName ?? null,
+                        crs: datum.crs ?? null,
+                        st: datum.st ?? null,
+                        et: datum.et ?? null,
+                        at: datum.at ?? null,
+                        isCancelled: datum.isCancelled ?? null,
+                        length: datum.length ?? null,
+                        detachFront: datum.detachFront ?? null,
+                        adhocAlerts: datum.adhocAlerts ?? null,
+                    } as CallingPointLocation
+                })
+            })
+        }
+
+
+        const prevPointsSet = arrayWrap<CallingPointWrapperResult>( service.previousCallingPoints?.callingPointList ) 
+        const subsequentPointsSet = arrayWrap<CallingPointWrapperResult>( service.subsequentCallingPoints?.callingPointList ) 
+        
+        return {
+            next: formatPointsGeneric( subsequentPointsSet ),
+            prior: formatPointsGeneric( prevPointsSet )
+        }
+    }
+
     private formatTrainServices(trainServices: TrainServiceResult[]): TrainService[]
     {
         return trainServices.map((service): TrainService => {
@@ -133,7 +164,9 @@ class Darwin implements HasConnector{
             
             const {
                 origins, destinations 
-            } = this.formatTrainServiceOriginAndDestination(service)
+            } = this.formatTrainServiceEndpoints(service)
+
+            const { next, prior } = this.formatTrainServiceCallingPoints(service)
 
             return{
                 serviceID: serviceID ?? null,
@@ -144,7 +177,8 @@ class Darwin implements HasConnector{
                 platform: platform ?? null,
                 operator: operator ?? null,
                 operatorCode: operatorCode ?? null,
-                origins, destinations
+                origins, destinations,
+                callingPoints: {next, prior}
             }
         })
     }

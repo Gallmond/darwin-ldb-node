@@ -8,7 +8,7 @@ export const arrayWrap = <Type>(value: unknown) => {
         typeof value === 'undefined'
         || value === null    
     ){
-        return []
+        return [] as Type[]
     }
 
     return (Array.isArray(value)
