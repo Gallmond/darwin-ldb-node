@@ -46,6 +46,27 @@ const noUndefinedProperties = (object: object) => {
 
 describe('Darwin-II Implementation', () => {
 
+    test('Darwin.arrivalsAndDepartures use case example', async () => {
+        
+        // show me all services at newcastle station like so:
+        /**
+         * Arrives           Platform Destination Operator Departs
+         * 10:10 (On Time)   9        Newcastle   LNER     10:15 (On time)
+         */
+
+        // show me the calling points at that station like so:
+        /**
+         * 
+         * 10:00 Durham
+         * 10:30 ChesterLeStreet
+         * 10:10 Newcastle (this is the chosen service)
+         * 10:30 Bewrick upon tweed
+         */
+
+
+    })
+
+
     test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
         const testConnector = new TestConnector()
         await testConnector.init()
