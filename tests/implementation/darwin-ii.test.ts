@@ -2,7 +2,8 @@ import SoapConnector from '../../src/darwin-ii/SoapConnector'
 import dotenv from 'dotenv'
 import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
-import Darwin from '../../src/darwin-ii'
+import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
+import { serialize } from 'v8'
 
 dotenv.config()
 
@@ -54,8 +55,10 @@ describe('Darwin-II Implementation', () => {
          * 10:10 (On Time)   9        Newcastle   LNER     10:15 (On time)
          */
 
-        // show me the calling points at that station like so:
+        // show me the calling points for the service at that station like so:
         /**
+         * 
+         * 
          * 
          * 10:00 Durham
          * 10:30 ChesterLeStreet
@@ -82,22 +85,62 @@ describe('Darwin-II Implementation', () => {
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
+
+            // skip if this service is cancelled
+            if(trainService.cancelled === true){
+                return
+            }
+
             // check that we got calling points for this service
             expect(trainService).toHaveProperty('callingPoints')
 
-            // every service should have a next and prior array
-            // these can be empty though
-            // for example a service at its destination will have no more calling points
-            expect(trainService.callingPoints).toHaveProperty('next')
-            expect(trainService.callingPoints).toHaveProperty('prior')
-            expect(Array.isArray(trainService.callingPoints.next)).toBe(true)
-            expect(Array.isArray(trainService.callingPoints.prior)).toBe(true)
+            const scheduledDest = trainService.destinations.scheduled
+            const destCsr = scheduledDest[ scheduledDest.length - 1 ].crs ?? 'FOOBAR'
+
+            const scheduledOrigin = trainService.origins.scheduled
+            const originCsr = scheduledOrigin[ scheduledOrigin.length - 1 ].crs ?? 'FOOBAR'
+
+            // every service should have a 'to' and 'from' array
+            const {to, from} = trainService.callingPoints
+            
+            // if we're already at our destination, the callingPoints.to object will be empty
+            if(destCsr === result.crs){
+                expect(to).toEqual({})
+            }
+            
+            if(destCsr !== result.crs){
+                // 'to' should have a key that matches the CSR of this service destination
+                expect(to).toHaveProperty(destCsr)
+                // its value should be an array
+                expect(Array.isArray(to[destCsr])).toBe(true)
+                // the last element of that array should be the CSR of this service destination
+                expect(to[destCsr][ to[destCsr].length - 1 ].crs).toBe(destCsr)
+            }
+            
+            // if we're currently at our origin callingPoints.from will be empty
+            if(originCsr === result.crs){
+                expect(from).toEqual({})
+            }            
+
+            if(originCsr !== result.crs){
+                // 'from' should have a key that matches the CSR of this service origin
+                expect(from).toHaveProperty(originCsr)
+                // its value should be an array
+                expect(Array.isArray(from[originCsr])).toBe(true)
+                // the first element of that array should be the CSR of this service origin
+                expect(from[originCsr][ 0 ].crs).toBe(originCsr)
+            }
 
             // they should all have the same format, so lets squash them together
-            const allPoints = [
-                ...trainService.callingPoints.next,
-                ...trainService.callingPoints.prior,
-            ]
+            const allPoints: CallingPointLocation[] = []
+            Object.entries(to).forEach(keyVal => {
+                const [, pointsArr] = keyVal
+                allPoints.push( ...pointsArr )
+            })
+            Object.entries(from).forEach(keyVal => {
+                const [, pointsArr] = keyVal
+                allPoints.push( ...pointsArr )
+            })
 
             expect(allPoints.length > 0).toBe(true)
 
@@ -106,21 +149,17 @@ describe('Darwin-II Implementation', () => {
              * multiple origins or destinations due to train joins and splits
              * each element is itself an array of points to/from that origin/destination
              */
-            allPoints.forEach(pointLocations => {
-                expect(Array.isArray( pointLocations )).toBe(true)
-                pointLocations.forEach(pointLocation => {
-                    expect(pointLocation).toHaveProperty('locationName')
-                    expect(pointLocation).toHaveProperty('crs')
-                    expect(pointLocation).toHaveProperty('st')
-                    expect(pointLocation).toHaveProperty('et')
-                    expect(pointLocation).toHaveProperty('at')
-                    expect(pointLocation).toHaveProperty('isCancelled')
-                    expect(pointLocation).toHaveProperty('length')
-                    expect(pointLocation).toHaveProperty('detachFront')
-                    expect(pointLocation).toHaveProperty('adhocAlerts')
-                })
+            allPoints.forEach(point => {
+                expect(point).toHaveProperty('locationName')
+                expect(point).toHaveProperty('crs')
+                expect(point).toHaveProperty('st')
+                expect(point).toHaveProperty('et')
+                expect(point).toHaveProperty('at')
+                expect(point).toHaveProperty('isCancelled')
+                expect(point).toHaveProperty('length')
+                expect(point).toHaveProperty('detachFront')
+                expect(point).toHaveProperty('adhocAlerts')
             })
-
         })
     })
 

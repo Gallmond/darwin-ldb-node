@@ -52,6 +52,7 @@ export interface TrainServiceResult{
     platform?: string,
     operator?: string,
     operatorCode?: string,
+    isCancelled?: boolean,
     origin?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     destination?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     currentOrigins?: { location?: ServiceLocationResult | ServiceLocationResult[] }

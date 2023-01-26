@@ -13,7 +13,17 @@ interface OriginOrDestinationLocation{
     unreachable: null | boolean
 }
 
-interface CallingPointLocation{
+/**
+ * like {
+ *  NCL: [CallingPointLocation, CallingPointLocation, CallingPointLocation],
+ *  EDN: [CallingPointLocation]
+ * }
+ */
+type CallingPointsHolder = {
+    [key: string]: CallingPointLocation[]
+}
+
+export interface CallingPointLocation{
     // The display name of this location.
     locationName: null | string 
     // The CRS code of this location. A CRS code of ??? indicates an error situation where no crs code is known for this location.
@@ -40,14 +50,15 @@ interface TrainService{
     etd: null | string
     sta: null | string
     std: null | string
+    cancelled: null | boolean
     platform: null | string
     operator: null | string
     operatorCode: null | string
     origins: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     destinations: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     callingPoints: {
-        next: CallingPointLocation[][],
-        prior: CallingPointLocation[][],
+        to: CallingPointsHolder,
+        from: CallingPointsHolder,
     }
 }
 
@@ -119,6 +130,13 @@ class Darwin implements HasConnector{
 
     private formatTrainServiceCallingPoints(service: TrainServiceResult){
         
+        /**
+         * these points all have annoying wrapping. Lets transform them to a 
+         * simple array where each entry is an array of calling points.
+         * 
+         * Both origin and destination use the same format so we can use this
+         * helper function 
+         */
         const formatPointsGeneric = (dataArray: CallingPointWrapperResult[]) => {
             return dataArray.map(element =>{
                 const data = arrayWrap<CallingPointResult>( element.callingPoint )
@@ -137,14 +155,59 @@ class Darwin implements HasConnector{
                 })
             })
         }
-
-
         const prevPointsSet = arrayWrap<CallingPointWrapperResult>( service.previousCallingPoints?.callingPointList ) 
         const subsequentPointsSet = arrayWrap<CallingPointWrapperResult>( service.subsequentCallingPoints?.callingPointList ) 
         
+        const basicPreviousArray = formatPointsGeneric( prevPointsSet )
+        const basicNextArray = formatPointsGeneric( subsequentPointsSet )
+
+        /**
+         * A note on the order of the calling points
+         * - they are in chronological order in both arrays
+         * - eg an Edinburgh -> London KGX services listed at newcastle will have
+         * - Aberdeen as first and Bewrick as last elements of the previous array
+         * - Darlington as first and KGX as last elements of the next array
+         */
+
+        const from: Record<string, CallingPointLocation[]> = basicPreviousArray.reduce((carry, set) => {
+            // no entries in this set, do nothing
+            if(set.length === 0) carry
+
+            // get the first CRS as this is the 'from set
+            const firstCrs = set[ 0 ].crs ?? '???'
+
+            if(typeof carry[ firstCrs ] !== 'undefined'){
+                const msg = 'Duplicate origin encountered'
+                console.error(msg, service)
+                throw new Error(msg)
+            }
+
+            carry[ firstCrs ] = set  
+
+            return carry
+        }, {} as Record<string, CallingPointLocation[]>)
+
+        const to: Record<string, CallingPointLocation[]> = basicNextArray.reduce((carry, set) => {
+            // no entries in this set, do nothing
+            if(set.length === 0) carry
+
+            // get the last crs, as this is the 'to' set
+            const lastCrs = set[ set.length - 1 ].crs ?? '???'
+
+            if(typeof carry[ lastCrs ] !== 'undefined'){
+                const msg = 'Duplicate destination encountered'
+                console.error(msg, service)
+                throw new Error(msg)
+            }
+
+            carry[ lastCrs ] = set  
+
+            return carry
+        }, {} as Record<string, CallingPointLocation[]>)
+
+
         return {
-            next: formatPointsGeneric( subsequentPointsSet ),
-            prior: formatPointsGeneric( prevPointsSet )
+            to, from
         }
     }
 
@@ -160,13 +223,14 @@ class Darwin implements HasConnector{
                 operator,
                 operatorCode,
                 serviceID,
+                isCancelled,
             } = service
             
             const {
                 origins, destinations 
             } = this.formatTrainServiceEndpoints(service)
 
-            const { next, prior } = this.formatTrainServiceCallingPoints(service)
+            const { to, from } = this.formatTrainServiceCallingPoints(service)
 
             return{
                 serviceID: serviceID ?? null,
@@ -174,11 +238,12 @@ class Darwin implements HasConnector{
                 etd: etd ?? null,
                 sta: sta ?? null,
                 std: std ?? null,
+                cancelled: isCancelled ?? null,
                 platform: platform ?? null,
                 operator: operator ?? null,
                 operatorCode: operatorCode ?? null,
                 origins, destinations,
-                callingPoints: {next, prior}
+                callingPoints: {to, from}
             }
         })
     }
