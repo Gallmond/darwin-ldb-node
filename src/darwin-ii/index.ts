@@ -31,34 +31,47 @@ export interface CallingPointLocation{
     // The scheduled time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list.
     st: null | string 
     // The estimated time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an actual time (at) is not present.
-    et?: null | string 
+    et: null | string 
     // The actual time of the service at this location. The time will be either an arrival or departure time, depending on whether it is in the subsequent or previous calling point list. Will only be present if an estimated time (et) is not present.
-    at?: null | string 
+    at: null | string 
     // A flag to indicate that this service is cancelled at this location.
-    isCancelled?: null | boolean 
+    isCancelled: null | boolean 
     // The train length (number of units) at this location. If not supplied, or zero, the length is unknown.
-    length?: null | number
+    length: null | number
     // True if the service detaches units from the front at this location.
-    detachFront?: null | boolean
+    detachFront: null | boolean
     // A list of Adhoc Alerts (strings) for this CallingPoint.
-    adhocAlerts?: null | string[] 
+    adhocAlerts: null | string[] 
 }
 
 interface TrainService{
     serviceID: null | string
-    eta: null | string
-    etd: null | string
-    sta: null | string
+    // note that services without a departure don't depart, ie it terminates here
+    // similarly services with no arrival originate here
+    sta: null | string // scheduled time of arrival
+    eta: null | string // expected time of arrival
     std: null | string
+    etd: null | string
     cancelled: null | boolean
     platform: null | string
     operator: null | string
     operatorCode: null | string
-    origins: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
-    destinations: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
+
+    from: {
+        scheduled: {[key: string]: OriginOrDestinationLocation},
+        current: {[key: string]: OriginOrDestinationLocation},
+    }
+    to: {
+        scheduled: {[key: string]: OriginOrDestinationLocation},
+        current: {[key: string]: OriginOrDestinationLocation},
+    }
+
+    // origins: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
+    // destinations: {scheduled: OriginOrDestinationLocation[], current: OriginOrDestinationLocation[]}
     callingPoints: {
-        to: CallingPointsHolder,
+        // the first entry is the 'through' train
         from: CallingPointsHolder,
+        to: CallingPointsHolder,
     }
 }
 
@@ -113,18 +126,42 @@ class Darwin implements HasConnector{
         }
 
         const scheduledOrigins = originArray.map( formatLocations )
-        const scheduledDestinations = destinationArray.map( formatLocations )
-
         const changedOrigins = changedOriginArray.map( formatLocations )
+
+        const scheduledDestinations = destinationArray.map( formatLocations )
         const changedDestinations = changedDestinationArray.map( formatLocations )
-        
+
+        const buildObject = (obj: Record<string, OriginOrDestinationLocation>, location: OriginOrDestinationLocation) => {
+            const {crs} = location
+
+            if(!crs){
+                throw new Error('Location without CRS')
+            }
+
+            if(typeof obj[crs] !== 'undefined'){
+                throw new Error('Duplicate origin or destination')
+            }
+
+            obj[crs] = location
+
+            return obj
+        }
+
+        const fromScheduled = scheduledOrigins.reduce(buildObject, {}) 
+        const fromCurrent = changedOrigins.reduce(buildObject, {}) 
+
+        const toScheduled = scheduledDestinations.reduce(buildObject, {})
+        const toCurrent = changedDestinations.reduce(buildObject, {})
+
         return {
-            origins: {
-                scheduled: scheduledOrigins, current: changedOrigins
+            from: {
+                scheduled: fromScheduled,
+                current: fromCurrent
             },
-            destinations: {
-                scheduled: scheduledDestinations, current: changedDestinations
-            },
+            to: {
+                scheduled: toScheduled,
+                current: toCurrent,
+            }
         }
     }
 
@@ -226,9 +263,7 @@ class Darwin implements HasConnector{
                 isCancelled,
             } = service
             
-            const {
-                origins, destinations 
-            } = this.formatTrainServiceEndpoints(service)
+            const endpoints = this.formatTrainServiceEndpoints(service)
 
             const { to, from } = this.formatTrainServiceCallingPoints(service)
 
@@ -242,8 +277,9 @@ class Darwin implements HasConnector{
                 platform: platform ?? null,
                 operator: operator ?? null,
                 operatorCode: operatorCode ?? null,
-                origins, destinations,
-                callingPoints: {to, from}
+                to: endpoints.to,
+                from: endpoints.from,
+                callingPoints: {to, from},
             }
         })
     }

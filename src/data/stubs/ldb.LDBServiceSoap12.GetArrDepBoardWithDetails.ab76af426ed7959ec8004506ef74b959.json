@@ -1,0 +1,1436 @@
+{
+  "GetStationBoardResult": {
+    "generatedAt": "2023-01-26T18:24:57.942Z",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "platformAvailable": true,
+    "trainServices": {
+      "service": [
+        {
+          "sta": "18:26",
+          "eta": "On time",
+          "std": "18:29",
+          "etd": "On time",
+          "platform": "4",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "serviceID": "254794NWCSTLE_",
+          "origin": {
+            "location": [{ "locationName": "Edinburgh", "crs": "EDB" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "London Kings Cross", "crs": "KGX" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "17:00",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Alnmouth",
+                  "crs": "ALM",
+                  "st": "18:00",
+                  "at": "On time"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "18:40",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "18:59",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "19:27",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Doncaster",
+                  "crs": "DON",
+                  "st": "19:52",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Newark North Gate",
+                  "crs": "NNG",
+                  "st": "20:15",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Peterborough",
+                  "crs": "PBO",
+                  "st": "20:43",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Stevenage",
+                  "crs": "SVG",
+                  "st": "21:14",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "21:39",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "std": "18:35",
+          "etd": "On time",
+          "platform": "3",
+          "operator": "CrossCountry",
+          "operatorCode": "XC",
+          "serviceType": "train",
+          "serviceID": "250041NWCSTLE_",
+          "rsid": "XC280000",
+          "origin": {
+            "location": [{ "locationName": "Newcastle", "crs": "NCL" }]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Birmingham New Street",
+                "crs": "BHM",
+                "via": "via Doncaster"
+              }
+            ]
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "18:47",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "19:06",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "19:33",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Doncaster",
+                  "crs": "DON",
+                  "st": "19:58",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Sheffield",
+                  "crs": "SHF",
+                  "st": "20:21",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Derby",
+                  "crs": "DBY",
+                  "st": "20:51",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Birmingham New Street",
+                  "crs": "BHM",
+                  "st": "21:30",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:31",
+          "eta": "On time",
+          "std": "18:37",
+          "etd": "On time",
+          "platform": "2",
+          "operator": "CrossCountry",
+          "operatorCode": "XC",
+          "serviceType": "train",
+          "serviceID": "249955NWCSTLE_",
+          "rsid": "XC118000",
+          "origin": {
+            "location": [{ "locationName": "Penzance", "crs": "PNZ" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "Edinburgh", "crs": "EDB" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Penzance",
+                  "crs": "PNZ",
+                  "st": "09:25",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "St Erth",
+                  "crs": "SER",
+                  "st": "09:34",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Redruth",
+                  "crs": "RED",
+                  "st": "09:54",
+                  "at": "09:56"
+                },
+                {
+                  "locationName": "Truro",
+                  "crs": "TRU",
+                  "st": "10:07",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "St Austell",
+                  "crs": "SAU",
+                  "st": "10:23",
+                  "at": "10:25"
+                },
+                {
+                  "locationName": "Bodmin Parkway",
+                  "crs": "BOD",
+                  "st": "10:41",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Liskeard",
+                  "crs": "LSK",
+                  "st": "10:53",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Plymouth",
+                  "crs": "PLY",
+                  "st": "11:27",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Totnes",
+                  "crs": "TOT",
+                  "st": "11:53",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Newton Abbot",
+                  "crs": "NTA",
+                  "st": "12:06",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Exeter St Davids",
+                  "crs": "EXD",
+                  "st": "12:27",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Tiverton Parkway",
+                  "crs": "TVP",
+                  "st": "12:41",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Taunton",
+                  "crs": "TAU",
+                  "st": "12:53",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Bristol Temple Meads",
+                  "crs": "BRI",
+                  "st": "13:35",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Bristol Parkway",
+                  "crs": "BPW",
+                  "st": "13:44",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Cheltenham Spa",
+                  "crs": "CNM",
+                  "st": "14:15",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Birmingham New Street",
+                  "crs": "BHM",
+                  "st": "15:03",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Burton-on-Trent",
+                  "crs": "BUT",
+                  "st": "15:26",
+                  "at": "15:29",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Derby",
+                  "crs": "DBY",
+                  "st": "15:45",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Chesterfield",
+                  "crs": "CHD",
+                  "st": "16:05",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Sheffield",
+                  "crs": "SHF",
+                  "st": "16:21",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Wakefield Westgate",
+                  "crs": "WKF",
+                  "st": "16:47",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Leeds",
+                  "crs": "LDS",
+                  "st": "17:07",
+                  "at": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "17:31",
+                  "at": "17:34",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "18:00",
+                  "at": "18:02",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "18:18",
+                  "at": "18:20",
+                  "length": "8"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Morpeth",
+                  "crs": "MPT",
+                  "st": "18:50",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Berwick-upon-Tweed",
+                  "crs": "BWK",
+                  "st": "19:24",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Dunbar",
+                  "crs": "DUN",
+                  "st": "19:47",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "20:11",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:37",
+          "eta": "18:39",
+          "std": "18:40",
+          "etd": "On time",
+          "platform": "4",
+          "operator": "CrossCountry",
+          "operatorCode": "XC",
+          "serviceType": "train",
+          "serviceID": "249738NWCSTLE_",
+          "rsid": "XC181000",
+          "origin": {
+            "location": [{ "locationName": "Edinburgh", "crs": "EDB" }]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Bristol Temple Meads",
+                "crs": "BRI",
+                "via": "via Leeds"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "17:07",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Dunbar",
+                  "crs": "DUN",
+                  "st": "17:28",
+                  "at": "17:31"
+                },
+                {
+                  "locationName": "Berwick-upon-Tweed",
+                  "crs": "BWK",
+                  "st": "17:51",
+                  "at": "17:54"
+                },
+                {
+                  "locationName": "Morpeth",
+                  "crs": "MPT",
+                  "st": "18:23",
+                  "et": "18:26"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "18:53",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "19:11",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "19:38",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Leeds",
+                  "crs": "LDS",
+                  "st": "20:08",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Wakefield Westgate",
+                  "crs": "WKF",
+                  "st": "20:22",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Sheffield",
+                  "crs": "SHF",
+                  "st": "20:54",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Derby",
+                  "crs": "DBY",
+                  "st": "21:26",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Burton-on-Trent",
+                  "crs": "BUT",
+                  "st": "21:40",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Tamworth",
+                  "crs": "TAM",
+                  "st": "21:50",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Birmingham New Street",
+                  "crs": "BHM",
+                  "st": "22:08",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Cheltenham Spa",
+                  "crs": "CNM",
+                  "st": "22:50",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Bristol Parkway",
+                  "crs": "BPW",
+                  "st": "23:20",
+                  "et": "On time",
+                  "length": "8"
+                },
+                {
+                  "locationName": "Bristol Temple Meads",
+                  "crs": "BRI",
+                  "st": "23:30",
+                  "et": "On time",
+                  "length": "8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:41",
+          "eta": "18:45",
+          "std": "18:44",
+          "etd": "18:46",
+          "platform": "3",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "delayReason": "This train has been delayed by a late running freight train",
+          "serviceID": "254847NWCSTLE_",
+          "rsid": "GR650000",
+          "origin": {
+            "location": [{ "locationName": "London Kings Cross", "crs": "KGX" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "Glasgow Central", "crs": "GLC" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "15:30",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Peterborough",
+                  "crs": "PBO",
+                  "st": "16:18",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Newark North Gate",
+                  "crs": "NNG",
+                  "st": "16:46",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Doncaster",
+                  "crs": "DON",
+                  "st": "17:10",
+                  "at": "17:14"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "17:35",
+                  "at": "17:46"
+                },
+                {
+                  "locationName": "Northallerton",
+                  "crs": "NTR",
+                  "st": "17:56",
+                  "at": "18:06"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "18:09",
+                  "at": "18:17"
+                },
+                {
+                  "locationName": "Durham",
+                  "crs": "DHM",
+                  "st": "18:27",
+                  "et": "18:33"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Alnmouth",
+                  "crs": "ALM",
+                  "st": "19:09",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "20:15",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Haymarket",
+                  "crs": "HYM",
+                  "st": "20:23",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Motherwell",
+                  "crs": "MTH",
+                  "st": "21:01",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Glasgow Central",
+                  "crs": "GLC",
+                  "st": "21:26",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:42",
+          "eta": "On time",
+          "std": "18:45",
+          "etd": "On time",
+          "platform": "7",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "2",
+          "serviceID": "256968NWCSTLE_",
+          "origin": {
+            "location": [{ "locationName": "Hexham", "crs": "HEX" }]
+          },
+          "destination": {
+            "location": [
+              {
+                "locationName": "Middlesbrough",
+                "crs": "MBR",
+                "via": "via Hartlepool"
+              }
+            ]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Hexham",
+                  "crs": "HEX",
+                  "st": "17:59",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Corbridge",
+                  "crs": "CRB",
+                  "st": "18:04",
+                  "at": "No report",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Riding Mill",
+                  "crs": "RDM",
+                  "st": "18:08",
+                  "at": "No report",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Stocksfield",
+                  "crs": "SKS",
+                  "st": "18:12",
+                  "at": "No report",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Prudhoe",
+                  "crs": "PRU",
+                  "st": "18:17",
+                  "at": "18:20",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Wylam",
+                  "crs": "WYM",
+                  "st": "18:21",
+                  "et": "18:24",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Blaydon",
+                  "crs": "BLO",
+                  "st": "18:27",
+                  "et": "18:30",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Metro Centre",
+                  "crs": "MCE",
+                  "st": "18:32",
+                  "et": "18:34",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Dunston",
+                  "crs": "DOT",
+                  "st": "18:35",
+                  "et": "18:37",
+                  "length": "2"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Heworth",
+                  "crs": "HEW",
+                  "st": "18:51",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Sunderland",
+                  "crs": "SUN",
+                  "st": "19:05",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Seaham",
+                  "crs": "SEA",
+                  "st": "19:13",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Horden",
+                  "crs": "HRE",
+                  "st": "19:21",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Hartlepool",
+                  "crs": "HPL",
+                  "st": "19:32",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Seaton Carew",
+                  "crs": "SEC",
+                  "st": "19:38",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Billingham",
+                  "crs": "BIL",
+                  "st": "19:44",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Stockton",
+                  "crs": "STK",
+                  "st": "19:52",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Thornaby",
+                  "crs": "TBY",
+                  "st": "19:57",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Middlesbrough",
+                  "crs": "MBR",
+                  "st": "20:04",
+                  "et": "On time",
+                  "length": "2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:53",
+          "eta": "On time",
+          "platform": "9",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "2",
+          "serviceID": "277238NWCSTLE_",
+          "origin": {
+            "location": [{ "locationName": "Carlisle", "crs": "CAR" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "Newcastle", "crs": "NCL" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Carlisle",
+                  "crs": "CAR",
+                  "st": "17:24",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Wetheral",
+                  "crs": "WRL",
+                  "st": "17:31",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Brampton (Cumbria)",
+                  "crs": "BMP",
+                  "st": "17:41",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Haltwhistle",
+                  "crs": "HWH",
+                  "st": "17:56",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Bardon Mill",
+                  "crs": "BLL",
+                  "st": "18:03",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Haydon Bridge",
+                  "crs": "HDB",
+                  "st": "18:09",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Hexham",
+                  "crs": "HEX",
+                  "st": "18:20",
+                  "at": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Prudhoe",
+                  "crs": "PRU",
+                  "st": "18:32",
+                  "et": "On time",
+                  "length": "2"
+                },
+                {
+                  "locationName": "Metro Centre",
+                  "crs": "MCE",
+                  "st": "18:44",
+                  "et": "On time",
+                  "length": "2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:50",
+          "eta": "On time",
+          "std": "18:54",
+          "etd": "On time",
+          "platform": "4",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "serviceID": "254866NWCSTLE_",
+          "rsid": "GR652000",
+          "origin": {
+            "location": [{ "locationName": "London Kings Cross", "crs": "KGX" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "Aberdeen", "crs": "ABD" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "16:00",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "17:56",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "18:24",
+                  "at": "On time"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Berwick-upon-Tweed",
+                  "crs": "BWK",
+                  "st": "19:36",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "20:20",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Haymarket",
+                  "crs": "HYM",
+                  "st": "20:38",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Inverkeithing",
+                  "crs": "INK",
+                  "st": "20:53",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Kirkcaldy",
+                  "crs": "KDY",
+                  "st": "21:10",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Leuchars",
+                  "crs": "LEU",
+                  "st": "21:38",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Dundee",
+                  "crs": "DEE",
+                  "st": "21:53",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Arbroath",
+                  "crs": "ARB",
+                  "st": "22:10",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Montrose",
+                  "crs": "MTS",
+                  "st": "22:26",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Stonehaven",
+                  "crs": "STN",
+                  "st": "22:50",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Aberdeen",
+                  "crs": "ABD",
+                  "st": "23:11",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "18:52",
+          "eta": "On time",
+          "std": "18:55",
+          "etd": "On time",
+          "platform": "7",
+          "operator": "Northern",
+          "operatorCode": "NT",
+          "serviceType": "train",
+          "length": "4",
+          "serviceID": "256953NWCSTLE_",
+          "origin": {
+            "location": [{ "locationName": "Whitby", "crs": "WTB" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "Hexham", "crs": "HEX" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Whitby",
+                  "crs": "WTB",
+                  "st": "15:58",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Ruswarp",
+                  "crs": "RUS",
+                  "st": "16:02",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Sleights",
+                  "crs": "SLH",
+                  "st": "16:07",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Grosmont",
+                  "crs": "GMT",
+                  "st": "16:16",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Egton",
+                  "crs": "EGT",
+                  "st": "16:20",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Glaisdale",
+                  "crs": "GLS",
+                  "st": "16:27",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Lealholm",
+                  "crs": "LHM",
+                  "st": "16:32",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Danby",
+                  "crs": "DNY",
+                  "st": "16:39",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Castleton Moor",
+                  "crs": "CSM",
+                  "st": "16:43",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Commondale",
+                  "crs": "COM",
+                  "st": "16:46",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Kildale",
+                  "crs": "KLD",
+                  "st": "16:54",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Battersby",
+                  "crs": "BTT",
+                  "st": "17:03",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Great Ayton",
+                  "crs": "GTA",
+                  "st": "17:09",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Nunthorpe",
+                  "crs": "NNT",
+                  "st": "17:17",
+                  "at": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Gypsy Lane",
+                  "crs": "GYP",
+                  "st": "17:19",
+                  "at": "17:21",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Marton",
+                  "crs": "MTO",
+                  "st": "17:22",
+                  "at": "17:24",
+                  "length": "4"
+                },
+                {
+                  "locationName": "James Cook",
+                  "crs": "JCH",
+                  "st": "17:24",
+                  "at": "17:27",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Middlesbrough",
+                  "crs": "MBR",
+                  "st": "17:31",
+                  "at": "17:33",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Thornaby",
+                  "crs": "TBY",
+                  "st": "17:37",
+                  "at": "17:39",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Stockton",
+                  "crs": "STK",
+                  "st": "17:42",
+                  "at": "17:45",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Billingham",
+                  "crs": "BIL",
+                  "st": "17:49",
+                  "at": "17:53",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Seaton Carew",
+                  "crs": "SEC",
+                  "st": "17:55",
+                  "at": "18:00",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Hartlepool",
+                  "crs": "HPL",
+                  "st": "18:01",
+                  "at": "18:05",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Horden",
+                  "crs": "HRE",
+                  "st": "18:11",
+                  "at": "No report",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Seaham",
+                  "crs": "SEA",
+                  "st": "18:20",
+                  "et": "18:24",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Sunderland",
+                  "crs": "SUN",
+                  "st": "18:30",
+                  "et": "18:33",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Heworth",
+                  "crs": "HEW",
+                  "st": "18:42",
+                  "et": "18:44",
+                  "length": "4"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Dunston",
+                  "crs": "DOT",
+                  "st": "19:00",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Metro Centre",
+                  "crs": "MCE",
+                  "st": "19:03",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Blaydon",
+                  "crs": "BLO",
+                  "st": "19:08",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Wylam",
+                  "crs": "WYM",
+                  "st": "19:14",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Prudhoe",
+                  "crs": "PRU",
+                  "st": "19:18",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Stocksfield",
+                  "crs": "SKS",
+                  "st": "19:23",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Riding Mill",
+                  "crs": "RDM",
+                  "st": "19:27",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Corbridge",
+                  "crs": "CRB",
+                  "st": "19:32",
+                  "et": "On time",
+                  "length": "4"
+                },
+                {
+                  "locationName": "Hexham",
+                  "crs": "HEX",
+                  "st": "19:38",
+                  "et": "On time",
+                  "length": "4"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "sta": "19:00",
+          "eta": "On time",
+          "std": "19:02",
+          "etd": "On time",
+          "platform": "3",
+          "operator": "London North Eastern Railway",
+          "operatorCode": "GR",
+          "serviceType": "train",
+          "serviceID": "254798NWCSTLE_",
+          "rsid": "GR572000",
+          "origin": {
+            "location": [{ "locationName": "Aberdeen", "crs": "ABD" }]
+          },
+          "destination": {
+            "location": [{ "locationName": "London Kings Cross", "crs": "KGX" }]
+          },
+          "previousCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Aberdeen",
+                  "crs": "ABD",
+                  "st": "14:52",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Stonehaven",
+                  "crs": "STN",
+                  "st": "15:11",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Montrose",
+                  "crs": "MTS",
+                  "st": "15:33",
+                  "at": "15:38"
+                },
+                {
+                  "locationName": "Arbroath",
+                  "crs": "ARB",
+                  "st": "15:50",
+                  "at": "15:55"
+                },
+                {
+                  "locationName": "Dundee",
+                  "crs": "DEE",
+                  "st": "16:10",
+                  "at": "16:13"
+                },
+                {
+                  "locationName": "Leuchars",
+                  "crs": "LEU",
+                  "st": "16:24",
+                  "at": "16:27"
+                },
+                {
+                  "locationName": "Kirkcaldy",
+                  "crs": "KDY",
+                  "st": "16:49",
+                  "at": "16:51"
+                },
+                {
+                  "locationName": "Inverkeithing",
+                  "crs": "INK",
+                  "st": "17:05",
+                  "at": "17:08"
+                },
+                {
+                  "locationName": "Haymarket",
+                  "crs": "HYM",
+                  "st": "17:21",
+                  "at": "17:23"
+                },
+                {
+                  "locationName": "Edinburgh",
+                  "crs": "EDB",
+                  "st": "17:30",
+                  "at": "17:32"
+                },
+                {
+                  "locationName": "Dunbar",
+                  "crs": "DUN",
+                  "st": "17:53",
+                  "at": "On time"
+                },
+                {
+                  "locationName": "Berwick-upon-Tweed",
+                  "crs": "BWK",
+                  "st": "18:16",
+                  "at": "On time"
+                }
+              ]
+            }
+          },
+          "subsequentCallingPoints": {
+            "callingPointList": {
+              "callingPoint": [
+                {
+                  "locationName": "Darlington",
+                  "crs": "DAR",
+                  "st": "19:30",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "York",
+                  "crs": "YRK",
+                  "st": "19:59",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Doncaster",
+                  "crs": "DON",
+                  "st": "20:23",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Peterborough",
+                  "crs": "PBO",
+                  "st": "21:14",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "Stevenage",
+                  "crs": "SVG",
+                  "st": "21:44",
+                  "et": "On time"
+                },
+                {
+                  "locationName": "London Kings Cross",
+                  "crs": "KGX",
+                  "st": "22:09",
+                  "et": "On time"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

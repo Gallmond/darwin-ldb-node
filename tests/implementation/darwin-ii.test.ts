@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
-import { serialize } from 'v8'
+import { writeFileSync } from 'fs'
 
 dotenv.config()
 
@@ -47,29 +47,6 @@ const noUndefinedProperties = (object: object) => {
 
 describe('Darwin-II Implementation', () => {
 
-    test('Darwin.arrivalsAndDepartures use case example', async () => {
-        
-        // show me all services at newcastle station like so:
-        /**
-         * Arrives           Platform Destination Operator Departs
-         * 10:10 (On Time)   9        Newcastle   LNER     10:15 (On time)
-         */
-
-        // show me the calling points for the service at that station like so:
-        /**
-         * 
-         * 
-         * 
-         * 10:00 Durham
-         * 10:30 ChesterLeStreet
-         * 10:10 Newcastle (this is the chosen service)
-         * 10:30 Bewrick upon tweed
-         */
-
-
-    })
-
-
     test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
         const testConnector = new TestConnector()
         await testConnector.init()
@@ -94,11 +71,10 @@ describe('Darwin-II Implementation', () => {
             // check that we got calling points for this service
             expect(trainService).toHaveProperty('callingPoints')
 
-            const scheduledDest = trainService.destinations.scheduled
-            const destCsr = scheduledDest[ scheduledDest.length - 1 ].crs ?? 'FOOBAR'
+            
 
-            const scheduledOrigin = trainService.origins.scheduled
-            const originCsr = scheduledOrigin[ scheduledOrigin.length - 1 ].crs ?? 'FOOBAR'
+            const destCsr = Object.keys(trainService.to.scheduled)[0] ?? 'FOOBAR'
+            const originCsr = Object.keys(trainService.from.scheduled)[0] ?? 'FOOBAR'
 
             // every service should have a 'to' and 'from' array
             const {to, from} = trainService.callingPoints
@@ -174,49 +150,52 @@ describe('Darwin-II Implementation', () => {
             crs: 'NCL',
         })
 
+        writeFileSync('./DELETEME.json', JSON.stringify(result, null, 2))
+
         noUndefinedProperties(result)
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
             //check origin and destinations
-            expect(trainService).toHaveProperty('origins')
-            expect(trainService).toHaveProperty('destinations')
+            expect(trainService).toHaveProperty('from')
+            expect(trainService).toHaveProperty('to')
 
             // origins format
-            expect(trainService.origins).toHaveProperty('scheduled')
-            expect(trainService.origins).toHaveProperty('current')
-            expect(Array.isArray(trainService.origins.scheduled)).toBe(true)
-            expect(Array.isArray(trainService.origins.current)).toBe(true)
-            trainService.origins.scheduled.forEach( location => {
+            expect(trainService.from).toHaveProperty('scheduled')
+            expect(trainService.to).toHaveProperty('current')
+            expect(typeof trainService.from.scheduled).toBe('object')
+            expect(typeof trainService.from.current).toBe('object')
+
+            Object.entries(trainService.from.scheduled).forEach(keyVal => {
+                const [crs, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
-            trainService.origins.scheduled.forEach( location => {
+            Object.entries(trainService.from.current).forEach(keyVal => {
+                const [crs, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
 
-            // destinations format
-            expect(trainService.destinations).toHaveProperty('scheduled')
-            expect(trainService.destinations).toHaveProperty('current')
-            expect(Array.isArray(trainService.destinations.scheduled)).toBe(true)
-            expect(Array.isArray(trainService.destinations.current)).toBe(true)
-            trainService.destinations.scheduled.forEach( location => {
+            Object.entries(trainService.to.scheduled).forEach(keyVal => {
+                const [, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
-            trainService.destinations.scheduled.forEach( location => {
+            Object.entries(trainService.to.current).forEach(keyVal => {
+                const [, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
+
         })
     })
 
@@ -312,7 +291,7 @@ describe('Darwin-II Connectors', () => {
      * 
      * This makes a real request
      */
-    test.skip('BUILD STUBS', async () => {
+    test('BUILD STUBS', async () => {
 
         const callPaths = {
             'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails': {crs: 'NCL'},
@@ -381,14 +360,10 @@ describe('Darwin-II Connectors', () => {
             expect(service).toHaveProperty('origin')
             expect(service).toHaveProperty('destination')
             expect(service).toHaveProperty('serviceID')
-            // expect(service).toHaveProperty('previousCallingPoints')
-            // expect(service).toHaveProperty('subsequentCallingPoints')
 
             expect(typeof service.origin).toBe('object')
             expect(typeof service.destination).toBe('object')
             expect(typeof service.serviceID).toBe('string')
-            // expect(typeof service.previousCallingPoints).toBe('object')
-            // expect(typeof service.subsequentCallingPoints).toBe('object')
         })
 
     })

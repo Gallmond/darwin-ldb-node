@@ -1,6 +1,7 @@
 import { PlainObj, ConnectorInterface } from './types'
-import { readFileSync, writeFileSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { createHash } from 'crypto'
+import { exit } from 'process'
 
 class TestConnector implements ConnectorInterface{
     
@@ -19,12 +20,17 @@ class TestConnector implements ConnectorInterface{
         const argsHash = hasher.digest('hex')
         const stubKey = `${callPath}.${argsHash}`
 
-        return `${__dirname}/./stubs/${stubKey}.json`
+        return `${__dirname}/../data/stubs/${stubKey}.json`
     }
 
-    static createStub(callPath: string, args: PlainObj, result: PlainObj){
+    static createStub(callPath: string, args: PlainObj, result: PlainObj, overWriteExisting = false){
         const fileData = JSON.stringify(result)
         const fileName = TestConnector.getStubFileName(callPath, args)
+
+        // do not overwrite existing stubs by default
+        if(overWriteExisting === false && existsSync(fileName)){
+            return
+        }
 
         try{
             writeFileSync(fileName, fileData)
