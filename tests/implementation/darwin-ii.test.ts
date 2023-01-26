@@ -4,17 +4,15 @@ import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
 import { writeFileSync } from 'fs'
-import { resourceLimits } from 'worker_threads'
-
-dotenv.config()
+dotenv.config({path: __dirname + '/../.env.test'})
 
 const {
-    WSDL_URL, ACCESS_TOKEN
+    LDB_DARWIN_ACCESS_TOKEN, LDB_DARWIN_WSDL_URL
 } = process.env
 
 const getSoapConnector = async (): Promise<SoapConnector> => {
-    const wsdlUrl = WSDL_URL as string
-    const accessToken = ACCESS_TOKEN as string
+    const wsdlUrl = LDB_DARWIN_WSDL_URL as string
+    const accessToken = LDB_DARWIN_ACCESS_TOKEN as string
 
     // able to connect and describe
     const soapConnector = new SoapConnector(wsdlUrl, accessToken)
@@ -151,8 +149,6 @@ describe('Darwin-II Implementation', () => {
             crs: 'NCL',
         })
 
-        writeFileSync('./DELETEME.json', JSON.stringify(result, null, 2))
-
         noUndefinedProperties(result)
 
         // those services have basic service data
@@ -168,14 +164,14 @@ describe('Darwin-II Implementation', () => {
             expect(typeof trainService.from.current).toBe('object')
 
             Object.entries(trainService.from.scheduled).forEach(keyVal => {
-                const [crs, location] = keyVal
+                const [, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
             Object.entries(trainService.from.current).forEach(keyVal => {
-                const [crs, location] = keyVal
+                const [, location] = keyVal
                 expect(location).toHaveProperty('locationName')
                 expect(location).toHaveProperty('crs')
                 expect(location).toHaveProperty('via')
@@ -268,8 +264,8 @@ describe('Darwin-II Connectors', () => {
     ]
 
     test('Env variables', () => {
-        expect(typeof WSDL_URL).toBe('string')
-        expect(typeof ACCESS_TOKEN).toBe('string')
+        expect(LDB_DARWIN_ACCESS_TOKEN).not.toBeUndefined()
+        expect(LDB_DARWIN_WSDL_URL).not.toBeUndefined()
     })
 
     test('SOAP Connector', async () => {
@@ -293,18 +289,14 @@ describe('Darwin-II Connectors', () => {
      * This makes a real request
      */
     test('BUILD STUBS', async () => {
-
         const callPaths = {
             'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails': {crs: 'NCL'},
             'ldb.LDBServiceSoap12.GetDepBoardWithDetails': {crs: 'KGX'},
             'ldb.LDBServiceSoap12.GetDepartureBoard': {crs: 'GTW'},
         }
-
         const testConnector = new TestConnector()
         await testConnector.init()
-
         const soapConnector = await getSoapConnector()
-
         Object.entries(callPaths).forEach(async (keyVal: [string, PlainObj]) => {
             const [callPath, args] = keyVal
             const result = await soapConnector.call(callPath, args)
