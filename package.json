@@ -1,8 +1,8 @@
 {
-  "name": "darwin-node",
+  "name": "darwin-ldb-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "lint": "npx eslint src/**/*.ts",
@@ -10,7 +10,7 @@
     "watch": "npx tsc --watch src/**/*.ts",
     "test": "jest"
   },
-  "author": "",
+  "author": "gav",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.20.12",

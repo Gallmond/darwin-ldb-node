@@ -4,6 +4,7 @@ import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
 import { writeFileSync } from 'fs'
+import { resourceLimits } from 'worker_threads'
 
 dotenv.config()
 
