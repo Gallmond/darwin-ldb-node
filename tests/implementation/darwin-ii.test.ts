@@ -3,23 +3,6 @@ import dotenv from 'dotenv'
 import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
-import { writeFileSync } from 'fs'
-dotenv.config({path: __dirname + '/../.env.test'})
-
-const {
-    LDB_DARWIN_ACCESS_TOKEN, LDB_DARWIN_WSDL_URL
-} = process.env
-
-const getSoapConnector = async (): Promise<SoapConnector> => {
-    const wsdlUrl = LDB_DARWIN_WSDL_URL as string
-    const accessToken = LDB_DARWIN_ACCESS_TOKEN as string
-
-    // able to connect and describe
-    const soapConnector = new SoapConnector(wsdlUrl, accessToken)
-    await soapConnector.init()
-
-    return soapConnector
-}
 
 /**
  * fails if an object has a single undefined value
@@ -43,6 +26,16 @@ const noUndefinedProperties = (object: object) => {
         expect(typeof val).not.toBe('undefined')
     })
 }
+
+describe('Darwin-II Initialization', () => {
+    
+    test('Darwin can be statically instantiated', async () => {
+        const d = await Darwin.make()
+        expect(d).toBeInstanceOf(Darwin)
+        expect(d.initialised).toBe(true)
+    })
+
+})
 
 describe('Darwin-II Implementation', () => {
 
@@ -253,6 +246,23 @@ describe('Darwin-II Implementation', () => {
 })
 
 describe('Darwin-II Connectors', () => {
+
+    dotenv.config({path: __dirname + '/../.env.test'})
+
+    const {
+        LDB_DARWIN_ACCESS_TOKEN, LDB_DARWIN_WSDL_URL
+    } = process.env
+
+    const getSoapConnector = async (): Promise<SoapConnector> => {
+        const wsdlUrl = LDB_DARWIN_WSDL_URL as string
+        const accessToken = LDB_DARWIN_ACCESS_TOKEN as string
+    
+        // able to connect and describe
+        const soapConnector = new SoapConnector(wsdlUrl, accessToken)
+        await soapConnector.init()
+    
+        return soapConnector
+    }
 
     /**
      * some specific services to test for

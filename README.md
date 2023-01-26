@@ -5,6 +5,9 @@ A helper module using Typescript and Jest to make the Live Departure Boards Web 
 For example we can request arrivals and departures for trains from NCL (Newcastle) to King's Cross like so:
 
 ```ts
+
+const darwin = await Darwin.make()
+
 const result = await darwin.arrivalsAndDepartures({
     crs: 'NCL',
     filterCrs: 'KGX',
@@ -18,9 +21,17 @@ console.log(`The ${scheduledTimeOfDeparture} train from Newcastle to King\'s Cro
 
 const callingPoints = firstService?.callingPoints.to.KGX ?? [] as CallingPointLocation[]
 callingPoints.forEach( location => {
-    const{ et, at, locationName } = location
-    console.log(`${et} (${at}) ${locationName}`) // "10:15 (on time) Darlington"
+    const{ st, et, at, locationName } = location
+    console.log(`${st} (${et ?? at}) ${locationName}`) 
 })
+
+// The 10:00 train from Newcastle to King's Cross calls at:
+// "10:15 (10:17) Darlington"
+// "10:40 (on time) York"
+// "11:50 (on time) Peterborough"
+// ... and so on
+
+
 ```
 
 Instead of having to manually compose SOAP documents like this:

@@ -1,4 +1,5 @@
 import { arrayWrap } from '../utils'
+import SoapConnector from './SoapConnector'
 import { CallingPointResult, CallingPointWrapperResult, ConnectorInterface, HasConnector, PlainObj, ServiceLocationResult, StationBoardInput, StationBoardResult, TrainServiceResult } from './types'
 
 /**
@@ -83,7 +84,7 @@ interface ArrivalsAndDeparturesResponse{
 }
  
 class Darwin implements HasConnector{
-    
+    initialised = false
     connectorInstance: ConnectorInterface | null = null
     get connector(): ConnectorInterface {
         if(this.connectorInstance === null){
@@ -96,10 +97,28 @@ class Darwin implements HasConnector{
         this.connectorInstance = connector
     }
 
+    static async make(wsdlUrl?: string, accessToken?: string){
+        const _wsdlUrl = wsdlUrl ?? process.env.LDB_DARWIN_WSDL_URL
+        const _accessToken = accessToken ?? process.env.LDB_DARWIN_ACCESS_TOKEN
+
+        if(!_wsdlUrl || !_accessToken){
+            throw new Error('Cannot instantiate SOAP Connector without WSDL and Access Token')
+        }
+
+        const connector = new SoapConnector(_wsdlUrl, _accessToken)
+
+        const darwin = new Darwin()
+        darwin.connector = connector
+        await darwin.init()
+        return darwin
+    }
+
     async init(){
         if(!this.connector.initialised){
             await this.connector.init()
         }
+
+        this.initialised = this.connector.initialised
     }
 
     failedParse(callPath: string, results: PlainObj){
