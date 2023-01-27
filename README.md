@@ -1,3 +1,8 @@
+//TODO
+- add 'through' property to the destinations, indicating it's the "main" one
+- add the serviceDetails method
+- pull out the response parsing into an injectable class
+
 # darwin-ldb-node
 
 A helper module using Typescript and Jest to make the Live Departure Boards Web Service (LDBWS / OpenLDBWS) SOAP interface more user friendly [link](https://lite.realtime.nationalrail.co.uk/OpenLDBWS/)
