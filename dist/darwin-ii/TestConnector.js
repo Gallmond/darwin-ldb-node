@@ -1,24 +1,11 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const crypto_1 = require("crypto");
 class TestConnector {
-    constructor() {
-        this.initialised = false;
-    }
-    init() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.initialised = true;
-        });
+    initialised = false;
+    async init() {
+        this.initialised = true;
     }
     static getStubFileName(callPath, args) {
         const hasher = (0, crypto_1.createHash)('md5');
@@ -46,22 +33,20 @@ class TestConnector {
             throw e;
         }
     }
-    call(callPath, args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return TestConnector.getStub(callPath, args);
-        });
+    static getStub = (callPath, args) => {
+        const fileName = TestConnector.getStubFileName(callPath, args);
+        let data;
+        try {
+            data = (0, fs_1.readFileSync)(fileName, { encoding: 'utf-8' });
+        }
+        catch (e) {
+            console.error(`Error reading ${fileName}`, e);
+            throw e;
+        }
+        return JSON.parse(data);
+    };
+    async call(callPath, args) {
+        return TestConnector.getStub(callPath, args);
     }
 }
-TestConnector.getStub = (callPath, args) => {
-    const fileName = TestConnector.getStubFileName(callPath, args);
-    let data;
-    try {
-        data = (0, fs_1.readFileSync)(fileName, { encoding: 'utf-8' });
-    }
-    catch (e) {
-        console.error(`Error reading ${fileName}`, e);
-        throw e;
-    }
-    return JSON.parse(data);
-};
 exports.default = TestConnector;

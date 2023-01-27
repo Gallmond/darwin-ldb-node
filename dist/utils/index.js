@@ -22,10 +22,10 @@ const flattenObject = (object, prefix = '') => {
         if (value
             && typeof value === 'object'
             && !Array.isArray(value)) {
-            return Object.assign(Object.assign({}, prev), (0, exports.flattenObject)(value, `${layerPrefix}.`));
+            return { ...prev, ...(0, exports.flattenObject)(value, `${layerPrefix}.`) };
         }
         else {
-            return Object.assign(Object.assign({}, prev), { [layerPrefix]: value });
+            return { ...prev, ...{ [layerPrefix]: value } };
         }
     }, {});
 };
