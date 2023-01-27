@@ -5,10 +5,10 @@
  */
 
 /** "Computer Reservation System" The three character station codes */
-type CRS = string
+export type CRS = string
 
 /** eg "10:30" "22:00" "On time" */
-type Time = string
+export type Time = string
 
 export interface OriginOrDestinationLocation{
     locationName: null | string

@@ -1,7 +1,9 @@
 //TODO
-- add 'through' property to the destinations, indicating it's the "main" one
-- add the serviceDetails method
-- pull out the response parsing into an injectable class
+- Add the serviceDetails method
+- Pull out the response parsing into an injectable class that we can swap out if the service changes
+- More comprehensive test cases. Ideally some services with cancellations / diversions / service splits and joins.
+- Explain the tests and the test stubs. How to use it for expanding darwin-ldb-node
+- Maybe: automatically generate Types from the WSDL service description (did attempt this but I found that the service as described does not match the actual responses...)
 
 # darwin-ldb-node
 
@@ -1128,11 +1130,3 @@ sta = scheduled time of arrival.
 std = scheduled time of departure.
 
 Not all services have both. For example a service terminating at the station for which the board query was made will have no departure time.
-
-# Future developments
-
-- Add the Darwin.serviceDetail(serviceId) method
-- More comprehensive test cases. Ideally some services with cancellations / diversions / service splits and joins.
-- Explain the tests and the test stubs. How to use it for expanding darwin-ldb-node
-- Create Parser class we can inject into darwin to keep service-specific responses separate. Such that if the service changes we can simply add a new Parser for that version.
-- Automatically generate Types from the WSDL service description (did attempt this but I found that the service as described does not match the actual responses...)

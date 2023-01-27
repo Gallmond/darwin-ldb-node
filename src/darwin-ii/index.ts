@@ -13,6 +13,7 @@ import { CallingPointResult,
 } from './ldb-types'
 
 import type {
+    CRS,
     TrainService,
     OriginOrDestinationLocation,
     CallingPointLocation,
@@ -175,43 +176,33 @@ class Darwin implements HasConnector{
          * - Aberdeen as first and Bewrick as last elements of the previous array
          * - Darlington as first and KGX as last elements of the next array
          */
+        const reducePoints = (carry: Record<CRS, CallingPointLocation[]>, set: CallingPointLocation[], type: 'from' | 'to') => {
+            if(set.length === 0) return carry
 
-        const from: Record<string, CallingPointLocation[]> = basicPreviousArray.reduce((carry, set) => {
-            // no entries in this set, do nothing
-            if(set.length === 0) carry
+            const isOrigin = type === 'from'
 
-            // get the first CRS as this is the 'from set
-            const firstCrs = set[ 0 ].crs ?? '???'
+            const crs = (isOrigin
+                ? set[ 0 ].crs
+                : set[ set.length - 1 ].crs) ?? '???'
 
-            if(typeof carry[ firstCrs ] !== 'undefined'){
-                const msg = 'Duplicate origin encountered'
+            if(typeof carry[ crs ] !== 'undefined'){
+                const msg = `Duplicate ${(isOrigin ? 'origin' : 'destination')} encountered`
                 console.error(msg, service)
                 throw new Error(msg)
             }
 
-            carry[ firstCrs ] = set  
+            carry[ crs ] = set  
 
             return carry
-        }, {} as Record<string, CallingPointLocation[]>)
+        }
 
-        const to: Record<string, CallingPointLocation[]> = basicNextArray.reduce((carry, set) => {
-            // no entries in this set, do nothing
-            if(set.length === 0) carry
+        const from = basicPreviousArray.reduce((carry, set) => {
+            return reducePoints(carry, set, 'from')
+        }, {} as Record<CRS, CallingPointLocation[]>)
 
-            // get the last crs, as this is the 'to' set
-            const lastCrs = set[ set.length - 1 ].crs ?? '???'
-
-            if(typeof carry[ lastCrs ] !== 'undefined'){
-                const msg = 'Duplicate destination encountered'
-                console.error(msg, service)
-                throw new Error(msg)
-            }
-
-            carry[ lastCrs ] = set  
-
-            return carry
-        }, {} as Record<string, CallingPointLocation[]>)
-
+        const to = basicNextArray.reduce((carry, set) => {
+            return reducePoints(carry, set, 'to')
+        }, {} as Record<CRS, CallingPointLocation[]>)
 
         return {
             to, from
@@ -222,15 +213,10 @@ class Darwin implements HasConnector{
     {
         return trainServices.map((service): TrainService => {
             const {
-                sta,
-                eta,
-                std,
-                etd,
-                platform,
-                operator,
-                operatorCode,
                 serviceID,
-                isCancelled,
+                sta, eta, std, etd, isCancelled,
+                platform,
+                operator, operatorCode,
             } = service
             
             const endpoints = this.formatTrainServiceEndpoints(service)

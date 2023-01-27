@@ -132,33 +132,26 @@ class Darwin {
          * - Aberdeen as first and Bewrick as last elements of the previous array
          * - Darlington as first and KGX as last elements of the next array
          */
-        const from = basicPreviousArray.reduce((carry, set) => {
-            // no entries in this set, do nothing
+        const reducePoints = (carry, set, type) => {
             if (set.length === 0)
-                carry;
-            // get the first CRS as this is the 'from set
-            const firstCrs = set[0].crs ?? '???';
-            if (typeof carry[firstCrs] !== 'undefined') {
-                const msg = 'Duplicate origin encountered';
+                return carry;
+            const isOrigin = type === 'from';
+            const crs = (isOrigin
+                ? set[0].crs
+                : set[set.length - 1].crs) ?? '???';
+            if (typeof carry[crs] !== 'undefined') {
+                const msg = `Duplicate ${(isOrigin ? 'origin' : 'destination')} encountered`;
                 console.error(msg, service);
                 throw new Error(msg);
             }
-            carry[firstCrs] = set;
+            carry[crs] = set;
             return carry;
+        };
+        const from = basicPreviousArray.reduce((carry, set) => {
+            return reducePoints(carry, set, 'from');
         }, {});
         const to = basicNextArray.reduce((carry, set) => {
-            // no entries in this set, do nothing
-            if (set.length === 0)
-                carry;
-            // get the last crs, as this is the 'to' set
-            const lastCrs = set[set.length - 1].crs ?? '???';
-            if (typeof carry[lastCrs] !== 'undefined') {
-                const msg = 'Duplicate destination encountered';
-                console.error(msg, service);
-                throw new Error(msg);
-            }
-            carry[lastCrs] = set;
-            return carry;
+            return reducePoints(carry, set, 'to');
         }, {});
         return {
             to, from
@@ -166,7 +159,7 @@ class Darwin {
     }
     formatTrainServices(trainServices) {
         return trainServices.map((service) => {
-            const { sta, eta, std, etd, platform, operator, operatorCode, serviceID, isCancelled, } = service;
+            const { serviceID, sta, eta, std, etd, isCancelled, platform, operator, operatorCode, } = service;
             const endpoints = this.formatTrainServiceEndpoints(service);
             const { to, from } = this.formatTrainServiceCallingPoints(service);
             return {

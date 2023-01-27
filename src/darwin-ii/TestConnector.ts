@@ -13,15 +13,13 @@ class TestConnector implements ConnectorInterface{
 
     private static getStubFileName(callPath: string, args: PlainObj): string
     {
-        const hasher = createHash('md5')
-        hasher.update( JSON.stringify(args) )
+        const argsHash = createHash( 'md5' )
+            .update( JSON.stringify(args) )
+            .digest( 'hex' )
 
-        const argsHash = hasher.digest('hex')
         const stubKey = `${callPath}.${argsHash}`
 
         const path = `${__dirname}/../../tests/data/stubs/${stubKey}.json`
-
-        console.log({path})
 
         return path
     }
@@ -30,8 +28,6 @@ class TestConnector implements ConnectorInterface{
         const fileData = JSON.stringify(result)
         const fileName = TestConnector.getStubFileName(callPath, args)
 
-        console.log({fileName})
-
         // do not overwrite existing stubs by default
         if(overWriteExisting === false && existsSync(fileName)){
             return
@@ -39,10 +35,9 @@ class TestConnector implements ConnectorInterface{
 
         try{
             writeFileSync(fileName, fileData)
-            console.log(`wrote stub ${fileName}`)
-        }catch(e){
-            console.error(`failed writing ${fileName}`, e)
-            throw e
+        }catch(error){
+            console.error(`failed writing ${fileName}`, {error, callPath, args})
+            throw error
         }
     }
 
@@ -53,9 +48,9 @@ class TestConnector implements ConnectorInterface{
         let data
         try{
             data = readFileSync(fileName, {encoding: 'utf-8'})
-        }catch(e){
-            console.error(`Error reading ${fileName}`, e)
-            throw e
+        }catch(error){
+            console.error(`Error reading ${fileName}`, {error, callPath, args})
+            throw error
         }
 
         return JSON.parse(data) as PlainObj
