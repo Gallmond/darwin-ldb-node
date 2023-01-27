@@ -28,7 +28,7 @@ const noUndefinedProperties = (object: object) => {
 }
 
 describe('Darwin-II Initialization', () => {
-    
+
     test('Darwin can be statically instantiated', async () => {
         const d = await Darwin.make()
         expect(d).toBeInstanceOf(Darwin)

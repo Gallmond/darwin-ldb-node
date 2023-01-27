@@ -10,6 +10,7 @@
     "watch": "npx tsc --watch",
     "test": "jest"
   },
+  "type": "commonjs",
   "types": "./dist/types/index.d.ts",
   "author": "gav",
   "license": "ISC",
