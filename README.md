@@ -1037,6 +1037,41 @@ And parse responses like this:
 
 </details>
 
+# Usage
+
+You will need an access token from the LDB service. This is free for reasonable use. You can register [here](http://realtime.nationalrail.co.uk/OpenLDBWSRegistration).
+
+You will need the target service WSDL. At time of writing it's this: `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01`. The [same link](https://lite.realtime.nationalrail.co.uk/OpenLDBWS) minus the wsdl extension also contains documentation and will indicate what the current WSDL is. 
+
+For fastest use simply add the token and url to environment variables:
+```
+LDB_DARWIN_ACCESS_TOKEN=<your access token here>
+LDB_DARWIN_WSDL_URL=https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01
+```
+
+Now you can instantiate the service like so:
+
+```js
+import { Darwin } from 'darwin-ldb-node'
+
+const d = Darwin.make()
+await d.init()
+
+const results = await d.arrivalsAndDepartures({crs: 'NCL'})
+```
+
+Alternatively you can manually pass the url and access token to the supplied SOAP connector like so:
+
+```js
+import { Darwin, SoapConnector } from 'darwin-ldb-node'
+
+const d = new Darwin()
+d.connector = new SoapConnector(wsdlUrl, accessToken)
+await d.init()
+
+const results = await d.arrivalsAndDepartures({crs: 'NCL'})
+```
+
 # Notes
 
 ## Stability
