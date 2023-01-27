@@ -1,5 +1,5 @@
 import * as soap from 'soap'
-import { PlainObj, ConnectorInterface } from './types'
+import { PlainObj, ConnectorInterface } from './ldb-types'
 
 type ServiceMethodCallback = (err: unknown, results: PlainObj) => void
 type ServiceMethod = (args: PlainObj, callback: ServiceMethodCallback) => unknown

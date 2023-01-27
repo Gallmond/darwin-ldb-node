@@ -79,13 +79,13 @@ interface StationBoardResult{
 interface StationBoardInput{
     // string, 3 characters, alphabetic
     // The CRS code (see above) of the location for which the request is being made.
-    crs: string,
+    crs: CRS,
     // integer, between 0 and 10 exclusive
     // The number of services to return in the resulting station board.
     numRows?: number,
     // string, 3 characters, alphabetic
     // The CRS code of either an origin or destination location to filter in. Optional.
-    filterCrs?: string,
+    filterCrs?: CRS,
     // string, either "from" or "to"
     // The type of filter to apply. Filters services to include only those originating or terminating at the filterCrs location. Defaults to "to". Optional.
     filterType?: 'from' | 'to',

@@ -1,5 +1,5 @@
 import * as soap from 'soap';
-import { PlainObj, ConnectorInterface } from './types';
+import { PlainObj, ConnectorInterface } from './ldb-types';
 declare class SoapConnector implements ConnectorInterface {
     wsdlUrl: string;
     accessToken: string;

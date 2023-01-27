@@ -1,4 +1,4 @@
-import { PlainObj, ConnectorInterface } from './types';
+import { PlainObj, ConnectorInterface } from './ldb-types';
 declare class TestConnector implements ConnectorInterface {
     initialised: boolean;
     init(): Promise<void>;

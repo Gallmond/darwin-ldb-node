@@ -1,4 +1,4 @@
-import { PlainObj, ConnectorInterface } from './types'
+import { PlainObj, ConnectorInterface } from './ldb-types'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import { createHash } from 'crypto'
 
