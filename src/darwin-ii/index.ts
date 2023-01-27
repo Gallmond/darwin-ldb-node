@@ -83,9 +83,27 @@ interface ArrivalsAndDeparturesResponse{
     trainServices: TrainService[]
 }
  
+interface DarwinOptions{
+    debug?: boolean
+}
+
 class Darwin implements HasConnector{
     initialised = false
     connectorInstance: ConnectorInterface | null = null
+    
+    options = {
+        debug: false
+    }
+
+    constructor(options?: DarwinOptions){
+        if(options){
+            this.options = {
+                ...this.options,
+                ...options
+            }
+        }
+    }
+    
     get connector(): ConnectorInterface {
         if(this.connectorInstance === null){
             throw new Error('missing connector')
