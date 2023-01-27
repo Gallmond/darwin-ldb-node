@@ -10,7 +10,6 @@ A helper module using Typescript and Jest to make the Live Departure Boards Web 
 For example we can request arrivals and departures for trains from NCL (Newcastle) to King's Cross like so:
 
 ```ts
-
 const darwin = await Darwin.make()
 
 const result = await darwin.arrivalsAndDepartures({
@@ -20,7 +19,7 @@ const result = await darwin.arrivalsAndDepartures({
 })
 
 const firstService = result.trainServices.pop()
-const scheduledTimeOfDeparture = firstService?.std // "10:00"
+const scheduledTimeOfDeparture = firstService?.std ?? "??:??" // "10:00"
 
 console.log(`The ${scheduledTimeOfDeparture} train from Newcastle to King\'s Cross calls at:`)
 
@@ -31,9 +30,9 @@ callingPoints.forEach( location => {
 })
 
 // The 10:00 train from Newcastle to King's Cross calls at:
-// "10:15 (10:17) Darlington"
-// "10:40 (on time) York"
-// "11:50 (on time) Peterborough"
+// 10:15 (10:17) Darlington
+// 10:40 (on time) York
+// 11:50 (on time) Peterborough
 // ... and so on
 ```
 
@@ -1042,7 +1041,7 @@ And parse responses like this:
 
 ## Stability
 
-darwin-ldb-node is written to make requests to and parse responses from the service defined by WSDL `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01`. If this service changes our results may vary and parsing / typing might break.
+`darwin-ldb-node` is written to make requests to and parse responses from the service defined by WSDL `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01`. If this service changes our results may vary and parsing / typing might break.
 
 ## Accuracy
 
@@ -1058,7 +1057,7 @@ It's possible for a service to have multiple origins if two trains were connecte
 
 Similarly it's possible for a service to have multiple destinations if the drain splits during the journey.
 
-See `TrainService.from.scheduled` object to see the scheduled destinations, where the object keys are the destination CRS. Same format for `to`
+See `TrainService.from.scheduled` object to see the scheduled destinations, where the object keys are the destination CRS. Same format for `to`.
 
 ## Multiple callingPoints
 
@@ -1073,25 +1072,25 @@ service.callingPoints.to.YRK // all calling points between KGX and YRK
 service.callingPoints.to.NCL // all calling points between KGX and NCL
 ```
 
-Note that the NCL set contains the YRK set
+Note that the NCL set contains the YRK set.
 
-Same format for `TrainService.callingPoints.to`
+Same format for `TrainService.callingPoints.to`.
 
-Note that the order of these array are chronological (ie, the first entry in the 'from' array should be an origin, and the last entry in the 'to' array should be a destination)
+Note that the order of these array are chronological (ie, the first entry in the 'from' array should be an origin, and the last entry in the 'to' array should be a destination).
 
 ## `st`/`sta`/`std` | `et`/`eta`/`etd` | `at`/`ata`/`atd`
 
-s = scheduled (the planned time for this service)
+s = scheduled (the planned time for this service).
 
-e = estimated (for example if running slightly late)
+e = estimated (for example if running slightly late).
 
-a = actual (usually available shortly after the train left)
+a = actual (usually available shortly after the train left).
 
-st = scheduled time (the calling points only list the 'time' not the arrival and departure times)
+st = scheduled time (the calling points only list the 'time' not the arrival and departure times).
 
-sta = scheduled time of arrival
+sta = scheduled time of arrival.
 
-std = scheduled time of departure
+std = scheduled time of departure.
 
 Not all services have both. For example a service terminating at the station for which the board query was made will have no departure time.
 
