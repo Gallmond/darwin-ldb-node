@@ -42,24 +42,27 @@ describe('Darwin-II Implementation', () => {
 
     test('Darwin.serviceDetails as expected', async () => {
 
-        const realDarwin = await Darwin.make()
-        const results = await realDarwin.arrivalsAndDepartures({crs: 'GTW'})
+        const existingStubs = [
+            {serviceId: '374388GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.1de2118f911d4f90785fdccd64481f23.json'},
+            {serviceId: '391386GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.e51778988e4e5a0ffe84bfeeed5ee725.json'},
+            {serviceId: '388651GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.ba21466dbfb729b6576c0618eb2a86d9.json'},
+            {serviceId: '391787GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.bac621c259a580ccd27ce8029b0de77f.json'},
+            {serviceId: '387312GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.c0314d2b7603b3a57c4dfc63d8b83293.json'},
+            {serviceId: '392513GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.9ec84ef750ab528950e46b2450765da7.json'},
+            {serviceId: '374154GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.3d1dbbf773a2ed53ef2a1e706389c994.json'},
+            {serviceId: '396884GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.de5d7c17153001014c8918770492b70e.json'},
+            {serviceId: '392412GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.8f25283e16e8690dc2fcb7b11190d1b1.json'},
+            {serviceId: '387320GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.da22bbc7b6afc1ad84fd21e99b86a2a6.json'},
+        ]
 
-        const promises = results.trainServices.map(service => {
-            return new Promise((resolve,reject)=>{
-                if(!service.serviceID){
-                    reject('No serviceID')
-                }else{
-                    realDarwin.serviceDetails(service.serviceID).then(result => {
-                        resolve(result)
-                    })
-                }
-            })
-        })
+        const testConnector = new TestConnector()
+        await testConnector.init()
 
-        await Promise.all(promises).then(results => {
-            console.log('finished all promsies', {results})
-        })
+        const darwin = new Darwin()
+        darwin.connector = testConnector
+
+        const stubbedResponse = await darwin.serviceDetails( '374388GTWK____' )
+        console.log(stubbedResponse)
 
     })
 

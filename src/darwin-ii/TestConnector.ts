@@ -24,7 +24,8 @@ class TestConnector implements ConnectorInterface{
         return path
     }
 
-    static createStub(callPath: string, args: PlainObj, result: PlainObj, overWriteExisting = false){
+    static createStub(callPath: string, args: PlainObj, result: PlainObj, overWriteExisting = false): string
+    {
         const fileData = JSON.stringify(result)
         const fileName = TestConnector.getStubFileName(callPath, args)
 
@@ -39,6 +40,8 @@ class TestConnector implements ConnectorInterface{
             console.error(`failed writing ${fileName}`, {error, callPath, args})
             throw error
         }
+
+        return fileName
     }
 
     static getStub = (callPath: string, args: PlainObj): PlainObj => 

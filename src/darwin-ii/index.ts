@@ -269,11 +269,13 @@ class Darwin implements HasConnector{
 
         const result = (results.GetServiceDetailsResult
             ? results.GetServiceDetailsResult
-            : this.failedParse(callPath, results)) as GetServ
+            : this.failedParse(callPath, results))
 
-        TestConnector.createStub(callPath, {serviceID}, results)
+        // const newFileName = TestConnector.createStub(callPath, {serviceID}, results)
 
-        return results
+        // console.log(`serviceId: ${serviceID}, file: ${newFileName}`)
+
+        return result as PlainObj
     }
 
     async arrivalsAndDepartures(options: StationBoardInput): Promise<ArrivalsAndDeparturesResponse>{
