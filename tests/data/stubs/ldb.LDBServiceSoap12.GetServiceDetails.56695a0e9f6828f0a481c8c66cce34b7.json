@@ -1,0 +1,195 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:47:08.633Z",
+    "serviceType": "train",
+    "locationName": "Gatwick Airport",
+    "crs": "GTW",
+    "operator": "Thameslink",
+    "operatorCode": "TL",
+    "delayReason": "This train has been delayed by a problem currently under investigation",
+    "length": "12",
+    "platform": "3",
+    "sta": "18:39",
+    "ata": "18:46",
+    "std": "18:40",
+    "etd": "18:47",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Bedford",
+            "crs": "BDM",
+            "st": "16:33",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Flitwick",
+            "crs": "FLT",
+            "st": "16:44",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Harlington",
+            "crs": "HLN",
+            "st": "16:48",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Leagrave",
+            "crs": "LEA",
+            "st": "16:53",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Luton",
+            "crs": "LUT",
+            "st": "16:57",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Luton Airport Parkway",
+            "crs": "LTN",
+            "st": "17:00",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "Harpenden",
+            "crs": "HPD",
+            "st": "17:05",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "St Albans",
+            "crs": "SAC",
+            "st": "17:11",
+            "at": "On time",
+            "length": "12"
+          },
+          {
+            "locationName": "London St Pancras (Intl)",
+            "crs": "STP",
+            "st": "17:35",
+            "at": "17:40",
+            "length": "12"
+          },
+          {
+            "locationName": "Farringdon",
+            "crs": "ZFD",
+            "st": "17:39",
+            "at": "17:45",
+            "length": "12"
+          },
+          {
+            "locationName": "City Thameslink",
+            "crs": "CTK",
+            "st": "17:41",
+            "at": "17:47",
+            "length": "12"
+          },
+          {
+            "locationName": "London Blackfriars",
+            "crs": "BFR",
+            "st": "17:44",
+            "at": "17:49",
+            "length": "12"
+          },
+          {
+            "locationName": "London Bridge",
+            "crs": "LBG",
+            "st": "17:51",
+            "at": "17:55",
+            "length": "12"
+          },
+          {
+            "locationName": "Norwood Junction",
+            "crs": "NWD",
+            "st": "18:02",
+            "at": "18:06",
+            "length": "12"
+          },
+          {
+            "locationName": "East Croydon",
+            "crs": "ECR",
+            "st": "18:06",
+            "at": "18:14",
+            "length": "12"
+          },
+          {
+            "locationName": "South Croydon",
+            "crs": "SCY",
+            "st": "18:09",
+            "at": "18:17",
+            "length": "12"
+          },
+          {
+            "locationName": "Purley",
+            "crs": "PUR",
+            "st": "18:13",
+            "at": "18:22",
+            "length": "12"
+          },
+          {
+            "locationName": "Coulsdon South",
+            "crs": "CDS",
+            "st": "18:17",
+            "at": "18:26",
+            "length": "12"
+          },
+          {
+            "locationName": "Merstham",
+            "crs": "MHM",
+            "st": "18:23",
+            "at": "18:31",
+            "length": "12"
+          },
+          {
+            "locationName": "Redhill",
+            "crs": "RDH",
+            "st": "18:27",
+            "at": "18:35",
+            "length": "12"
+          },
+          {
+            "locationName": "Earlswood (Surrey)",
+            "crs": "ELD",
+            "st": "18:30",
+            "at": "18:37",
+            "length": "12"
+          },
+          {
+            "locationName": "Salfords",
+            "crs": "SAF",
+            "st": "18:33",
+            "at": "18:41",
+            "length": "12"
+          },
+          {
+            "locationName": "Horley",
+            "crs": "HOR",
+            "st": "18:37",
+            "at": "18:45",
+            "length": "12"
+          }
+        ]
+      }
+    },
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": {
+          "locationName": "Three Bridges",
+          "crs": "TBD",
+          "st": "18:46",
+          "et": "18:52",
+          "length": "12"
+        }
+      }
+    }
+  }
+}

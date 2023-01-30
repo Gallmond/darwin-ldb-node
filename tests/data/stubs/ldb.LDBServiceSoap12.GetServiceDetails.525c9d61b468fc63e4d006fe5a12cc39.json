@@ -1,0 +1,136 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:44:18.323Z",
+    "serviceType": "train",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "operator": "London North Eastern Railway",
+    "operatorCode": "GR",
+    "rsid": "GR572000",
+    "platform": "3",
+    "sta": "19:00",
+    "eta": "19:04",
+    "std": "19:02",
+    "etd": "19:05",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Aberdeen",
+            "crs": "ABD",
+            "st": "14:52",
+            "at": "On time"
+          },
+          {
+            "locationName": "Stonehaven",
+            "crs": "STN",
+            "st": "15:11",
+            "at": "On time"
+          },
+          {
+            "locationName": "Montrose",
+            "crs": "MTS",
+            "st": "15:33",
+            "at": "On time"
+          },
+          {
+            "locationName": "Arbroath",
+            "crs": "ARB",
+            "st": "15:50",
+            "at": "On time"
+          },
+          {
+            "locationName": "Dundee",
+            "crs": "DEE",
+            "st": "16:10",
+            "at": "On time"
+          },
+          {
+            "locationName": "Leuchars",
+            "crs": "LEU",
+            "st": "16:24",
+            "at": "On time"
+          },
+          {
+            "locationName": "Kirkcaldy",
+            "crs": "KDY",
+            "st": "16:49",
+            "at": "On time"
+          },
+          {
+            "locationName": "Inverkeithing",
+            "crs": "INK",
+            "st": "17:05",
+            "at": "On time"
+          },
+          {
+            "locationName": "Haymarket",
+            "crs": "HYM",
+            "st": "17:21",
+            "at": "17:24"
+          },
+          {
+            "locationName": "Edinburgh",
+            "crs": "EDB",
+            "st": "17:30",
+            "at": "17:33"
+          },
+          {
+            "locationName": "Dunbar",
+            "crs": "DUN",
+            "st": "17:53",
+            "at": "17:56"
+          },
+          {
+            "locationName": "Berwick-upon-Tweed",
+            "crs": "BWK",
+            "st": "18:16",
+            "at": "18:21"
+          }
+        ]
+      }
+    },
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Darlington",
+            "crs": "DAR",
+            "st": "19:30",
+            "et": "On time"
+          },
+          {
+            "locationName": "York",
+            "crs": "YRK",
+            "st": "19:59",
+            "et": "On time"
+          },
+          {
+            "locationName": "Doncaster",
+            "crs": "DON",
+            "st": "20:23",
+            "et": "On time"
+          },
+          {
+            "locationName": "Peterborough",
+            "crs": "PBO",
+            "st": "21:14",
+            "et": "On time"
+          },
+          {
+            "locationName": "Stevenage",
+            "crs": "SVG",
+            "st": "21:44",
+            "et": "On time"
+          },
+          {
+            "locationName": "London Kings Cross",
+            "crs": "KGX",
+            "st": "22:09",
+            "et": "On time"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import SoapConnector from '../../src/darwin-ii/SoapConnector'
 import dotenv from 'dotenv'
-import { PlainObj } from '../../src/darwin-ii/types'
 import TestConnector from '../../src/darwin-ii/TestConnector'
-import Darwin, { CallingPointLocation } from '../../src/darwin-ii'
+import Darwin from '../../src/darwin-ii'
+import { CallingPointLocation } from '../../src/darwin-ii/darwin-types'
+import { PlainObj } from '../../src/darwin-ii/ldb-types'
 
 /**
  * fails if an object has a single undefined value
@@ -38,6 +39,29 @@ describe('Darwin-II Initialization', () => {
 })
 
 describe('Darwin-II Implementation', () => {
+
+    test('Darwin.serviceDetails as expected', async () => {
+
+        const realDarwin = await Darwin.make()
+        const results = await realDarwin.arrivalsAndDepartures({crs: 'GTW'})
+
+        const promises = results.trainServices.map(service => {
+            return new Promise((resolve,reject)=>{
+                if(!service.serviceID){
+                    reject('No serviceID')
+                }else{
+                    realDarwin.serviceDetails(service.serviceID).then(result => {
+                        resolve(result)
+                    })
+                }
+            })
+        })
+
+        await Promise.all(promises).then(results => {
+            console.log('finished all promsies', {results})
+        })
+
+    })
 
     test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
         const testConnector = new TestConnector()

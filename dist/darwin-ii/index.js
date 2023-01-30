@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 const SoapConnector_1 = __importDefault(require("./SoapConnector"));
+const TestConnector_1 = __importDefault(require("./TestConnector"));
 class Darwin {
     initialised = false;
     connectorInstance = null;
@@ -95,13 +96,18 @@ class Darwin {
             }
         };
     }
+    unWrapCallingPoints; //TODO write this
     formatTrainServiceCallingPoints(service) {
         /**
-         * these points all have annoying wrapping. Lets transform them to a
-         * simple array where each entry is an array of calling points.
-         *
-         * Both origin and destination use the same format so we can use this
-         * helper function
+         * if this service has multiple origins/destinations this will be an
+         * array. But if it only has one it won't be. So we'll make sure we're
+         * always dealing with an array
+         */
+        const prevPointsSet = (0, utils_1.arrayWrap)(service.previousCallingPoints?.callingPointList);
+        const subsequentPointsSet = (0, utils_1.arrayWrap)(service.subsequentCallingPoints?.callingPointList);
+        /**
+         * Now lets loop through them and remove the 'callingPoint' wrapper as
+         * we format them. As above this too can be an array or an object
          */
         const formatPointsGeneric = (dataArray) => {
             return dataArray.map(element => {
@@ -121,16 +127,24 @@ class Darwin {
                 });
             });
         };
-        const prevPointsSet = (0, utils_1.arrayWrap)(service.previousCallingPoints?.callingPointList);
-        const subsequentPointsSet = (0, utils_1.arrayWrap)(service.subsequentCallingPoints?.callingPointList);
+        /**
+         * These are now simple arrays of arrays of points. For example:
+         * [
+         *   [{}, {}, {}],         // points to destinationA
+         *   [{}, {}, {}, {}, {}], // points to destinationB
+         * ]
+         */
         const basicPreviousArray = formatPointsGeneric(prevPointsSet);
         const basicNextArray = formatPointsGeneric(subsequentPointsSet);
         /**
-         * A note on the order of the calling points
-         * - they are in chronological order in both arrays
-         * - eg an Edinburgh -> London KGX services listed at newcastle will have
-         * - Aberdeen as first and Bewrick as last elements of the previous array
-         * - Darlington as first and KGX as last elements of the next array
+         * We can use the last/first element of the arrays to wrap them in an
+         * object indicating which origin / destination they are from / to.
+         * for example:
+         *
+         * {
+         *    KGX: [{}, {}, {}],         // points to King's Cross
+         *    NCL: [{}, {}, {}, {}, {}], // points to Newcastle
+         * }
          */
         const reducePoints = (carry, set, type) => {
             if (set.length === 0)
@@ -177,6 +191,15 @@ class Darwin {
                 callingPoints: { to, from },
             };
         });
+    }
+    async serviceDetails(serviceID) {
+        const callPath = 'ldb.LDBServiceSoap12.GetServiceDetails';
+        const results = await this.connector.call(callPath, { serviceID });
+        const result = (results.GetServiceDetailsResult
+            ? results.GetServiceDetailsResult
+            : this.failedParse(callPath, results));
+        TestConnector_1.default.createStub(callPath, { serviceID }, results);
+        return results;
     }
     async arrivalsAndDepartures(options) {
         const callPath = 'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails';

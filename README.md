@@ -1,5 +1,6 @@
 //TODO
 - Add the serviceDetails method
+- Create example projects (list services at a station, list specific service details)
 - Pull out the response parsing into an injectable class that we can swap out if the service changes
 - More comprehensive test cases. Ideally some services with cancellations / diversions / service splits and joins.
 - Explain the tests and the test stubs. How to use it for expanding darwin-ldb-node

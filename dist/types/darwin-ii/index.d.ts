@@ -13,8 +13,10 @@ declare class Darwin implements HasConnector {
     init(): Promise<void>;
     failedParse(callPath: string, results: PlainObj): void;
     private formatTrainServiceEndpoints;
+    private unWrapCallingPoints;
     private formatTrainServiceCallingPoints;
     private formatTrainServices;
+    serviceDetails(serviceID: string): Promise<PlainObj>;
     arrivalsAndDepartures(options: StationBoardInput): Promise<ArrivalsAndDeparturesResponse>;
 }
 export default Darwin;

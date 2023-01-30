@@ -26,6 +26,9 @@ export interface ServiceLocationResult {
     futureChangeTo?: string;
     assocIsCancelled?: boolean;
 }
+export interface CallingPointsContainerResult {
+    callingPointList: CallingPointsListResult;
+}
 export interface TrainServiceResult {
     serviceID: string;
     sta?: Time;
@@ -48,12 +51,8 @@ export interface TrainServiceResult {
     currentDestinations?: {
         location?: ServiceLocationResult | ServiceLocationResult[];
     };
-    previousCallingPoints?: {
-        callingPointList: CallingPointsListResult;
-    };
-    subsequentCallingPoints?: {
-        callingPointList: CallingPointsListResult;
-    };
+    previousCallingPoints?: CallingPointsContainerResult;
+    subsequentCallingPoints?: CallingPointsContainerResult;
 }
 interface StationBoardResult {
     generatedAt: Date;
@@ -63,6 +62,59 @@ interface StationBoardResult {
     trainServices: {
         service: Array<unknown> | PlainObj;
     };
+}
+interface CoachDataResult {
+    coachClass: string;
+    loading: number;
+    loadingSpecified: string;
+    number: string;
+    toilet: {
+        status: 'Unknown' | 'InService' | 'NotInService';
+        value: 'Unknown' | 'None' | 'Standard' | 'Accessible';
+    };
+}
+export interface ServiceDetailsResult {
+    diversionReason?: string;
+    divertedVia?: string;
+    overdueMessage?: string;
+    detachFront?: boolean;
+    isReverseFormation?: boolean;
+    adhocAlerts?: string[];
+    formation?: {
+        loadingCategory: {
+            code: string;
+            colour: string;
+            image: string;
+        };
+        coaches: CoachDataResult[];
+    };
+    generatedAt: Date;
+    serviceType: string;
+    locationName: string;
+    crs: CRS;
+    operator: string;
+    operatorCode: string;
+    length: number;
+    platform: number;
+    sta: Time;
+    eta?: Time;
+    ata?: Time;
+    std: Time;
+    etd?: Time;
+    atd?: Time;
+    isCancelled?: boolean;
+    cancelReason?: string;
+    delayReason?: string;
+    rsid?: string;
+    previousCallingPoints?: {
+        callingPointList: CallingPointsListResult;
+    };
+    subsequentCallingPoints?: {
+        callingPointList: CallingPointsListResult;
+    };
+}
+export interface ServiceDetailsInput {
+    serviceID: string;
 }
 interface StationBoardInput {
     crs: CRS;

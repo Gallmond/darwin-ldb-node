@@ -1,0 +1,84 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:44:18.261Z",
+    "serviceType": "train",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "operator": "Northern",
+    "operatorCode": "NT",
+    "isCancelled": true,
+    "cancelReason": "This train has been cancelled because of a short-notice change to the timetable",
+    "length": "2",
+    "sta": "18:53",
+    "eta": "Cancelled",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Carlisle",
+            "crs": "CAR",
+            "st": "17:24",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Wetheral",
+            "crs": "WRL",
+            "st": "17:31",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Brampton (Cumbria)",
+            "crs": "BMP",
+            "st": "17:41",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Haltwhistle",
+            "crs": "HWH",
+            "st": "17:56",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Bardon Mill",
+            "crs": "BLL",
+            "st": "18:03",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Haydon Bridge",
+            "crs": "HDB",
+            "st": "18:09",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Hexham",
+            "crs": "HEX",
+            "st": "18:20",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Prudhoe",
+            "crs": "PRU",
+            "st": "18:32",
+            "et": "Cancelled",
+            "length": "2"
+          },
+          {
+            "locationName": "Metro Centre",
+            "crs": "MCE",
+            "st": "18:44",
+            "et": "Cancelled",
+            "length": "2"
+          }
+        ]
+      }
+    }
+  }
+}

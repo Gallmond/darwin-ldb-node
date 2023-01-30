@@ -1,0 +1,154 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:47:08.683Z",
+    "serviceType": "train",
+    "locationName": "Gatwick Airport",
+    "crs": "GTW",
+    "operator": "Southern",
+    "operatorCode": "SN",
+    "length": "8",
+    "platform": "6",
+    "sta": "18:51",
+    "eta": "On time",
+    "std": "18:52",
+    "etd": "On time",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "London Victoria",
+            "crs": "VIC",
+            "st": "18:16",
+            "at": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Clapham Junction",
+            "crs": "CLJ",
+            "st": "18:23",
+            "at": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "East Croydon",
+            "crs": "ECR",
+            "st": "18:34",
+            "at": "18:35",
+            "length": "8"
+          },
+          {
+            "locationName": "Horley",
+            "crs": "HOR",
+            "st": "18:48",
+            "et": "On time",
+            "length": "8"
+          }
+        ]
+      }
+    },
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Haywards Heath",
+            "crs": "HHE",
+            "st": "19:02",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Burgess Hill",
+            "crs": "BUG",
+            "st": "19:09",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Hassocks",
+            "crs": "HSK",
+            "st": "19:13",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Preston Park",
+            "crs": "PRP",
+            "st": "19:20",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Hove",
+            "crs": "HOV",
+            "st": "19:24",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Portslade",
+            "crs": "PLD",
+            "st": "19:28",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Shoreham-by-Sea",
+            "crs": "SSE",
+            "st": "19:33",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Lancing",
+            "crs": "LAC",
+            "st": "19:37",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Worthing",
+            "crs": "WRH",
+            "st": "19:42",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "West Worthing",
+            "crs": "WWO",
+            "st": "19:44",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Durrington-on-Sea",
+            "crs": "DUR",
+            "st": "19:47",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Goring-by-Sea",
+            "crs": "GBS",
+            "st": "19:50",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Angmering",
+            "crs": "ANG",
+            "st": "19:55",
+            "et": "On time",
+            "length": "8"
+          },
+          {
+            "locationName": "Littlehampton",
+            "crs": "LIT",
+            "st": "20:05",
+            "et": "On time",
+            "length": "8"
+          }
+        ]
+      }
+    }
+  }
+}

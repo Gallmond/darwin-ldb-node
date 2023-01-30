@@ -43,6 +43,10 @@ export interface ServiceLocationResult{
     assocIsCancelled?: boolean  	
 }
 
+export interface CallingPointsContainerResult{
+    callingPointList: CallingPointsListResult
+}
+
 export interface TrainServiceResult{
     serviceID: string,
     sta?: Time,
@@ -57,15 +61,8 @@ export interface TrainServiceResult{
     destination?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     currentOrigins?: { location?: ServiceLocationResult | ServiceLocationResult[] }
     currentDestinations?: { location?: ServiceLocationResult | ServiceLocationResult[] }
-
-    previousCallingPoints?: {
-        callingPointList: CallingPointsListResult
-    }
-
-    subsequentCallingPoints?: {
-        callingPointList: CallingPointsListResult
-    }
-
+    previousCallingPoints?: CallingPointsContainerResult
+    subsequentCallingPoints?: CallingPointsContainerResult
 }
 
 interface StationBoardResult{
@@ -74,6 +71,62 @@ interface StationBoardResult{
     crs: CRS
     platformAvailable: string
     trainServices: { service: Array<unknown> | PlainObj }
+}
+
+interface CoachDataResult{
+    coachClass: string                                  // 	The class of coach, where known. First, Mixed or Standard. Other classes may be introduced in the future.
+    loading: number                                     // 	The loading value (0-100) for the coach.
+    loadingSpecified: string                            // 	Whether loading has been specified or not.
+    number: string                                      // 	The number/identifier for this coach, e.g. "A" or "12". Maximum of two characters.
+    toilet: {                                           // 	A ToiletAvailabilityType object representing toilet data. (2017-10-01 schema onwards)
+        status: 'Unknown'|'InService'|'NotInService'    // 	ToiletStatus enumeration (Unknown, InService, NotInService), indicating service status
+        value: 'Unknown'|'None'|'Standard'|'Accessible' // 	Type of toilet (Unknown, None, Standard, Accessible)
+    }
+}
+
+export interface ServiceDetailsResult{
+    diversionReason?: string // 	The reason for a diversion.
+    divertedVia?: string // 	The location of the diversion.
+    overdueMessage?: string // 	If an expected movement report has been missed, this will contain a message describing the missed movement.
+    detachFront?: boolean // 	True if the service detaches units from the front at this location.
+    isReverseFormation?: boolean// 	True if the service is operating in the reverse of its normal formation.
+    adhocAlerts?: string[] // 	A list of Adhoc Alerts (strings) for this ServiceDetail.
+    formation?: {
+        loadingCategory: {
+            code: string,   //The train loading category code.
+            colour: string, //The colour to be used when displaying this category.
+            image: string,  //Name of an image file to be used as an icon for this category
+        }
+        coaches: CoachDataResult[]        
+    }
+    generatedAt: Date
+    serviceType: string
+    locationName: string
+    crs: CRS
+    operator: string
+    operatorCode: string
+    length: number
+    platform: number
+    sta: Time
+    eta?: Time
+    ata?: Time
+    std: Time
+    etd?: Time
+    atd?: Time
+    isCancelled?: boolean
+    cancelReason?: string
+    delayReason?: string
+    rsid?: string
+    previousCallingPoints?: {
+        callingPointList: CallingPointsListResult
+    }
+    subsequentCallingPoints?: {
+        callingPointList: CallingPointsListResult
+    }
+}
+
+export interface ServiceDetailsInput{
+    serviceID: string
 }
 
 interface StationBoardInput{

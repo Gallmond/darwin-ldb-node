@@ -1,0 +1,78 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:44:18.270Z",
+    "serviceType": "train",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "operator": "TransPennine Express",
+    "operatorCode": "TP",
+    "rsid": "TP514600",
+    "delayReason": "This train has been delayed by congestion",
+    "length": "5",
+    "platform": "1",
+    "sta": "18:18",
+    "eta": "18:48",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Liverpool Lime Street",
+            "crs": "LIV",
+            "st": "15:24",
+            "at": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Newton-le-Willows",
+            "crs": "NLW",
+            "st": "15:41",
+            "at": "15:48",
+            "length": "5"
+          },
+          {
+            "locationName": "Manchester Victoria",
+            "crs": "MCV",
+            "st": "16:00",
+            "at": "16:13",
+            "length": "5"
+          },
+          {
+            "locationName": "Huddersfield",
+            "crs": "HUD",
+            "st": "16:30",
+            "at": "16:48",
+            "length": "5"
+          },
+          {
+            "locationName": "Leeds",
+            "crs": "LDS",
+            "st": "16:51",
+            "at": "17:21",
+            "length": "5"
+          },
+          {
+            "locationName": "York",
+            "crs": "YRK",
+            "st": "17:21",
+            "at": "17:54",
+            "length": "5"
+          },
+          {
+            "locationName": "Darlington",
+            "crs": "DAR",
+            "st": "17:49",
+            "at": "18:21",
+            "length": "5"
+          },
+          {
+            "locationName": "Durham",
+            "crs": "DHM",
+            "st": "18:05",
+            "at": "18:38",
+            "length": "5"
+          }
+        ]
+      }
+    }
+  }
+}

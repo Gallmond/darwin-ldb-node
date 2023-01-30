@@ -1,0 +1,106 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:44:18.316Z",
+    "serviceType": "train",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "operator": "London North Eastern Railway",
+    "operatorCode": "GR",
+    "rsid": "GR650000",
+    "platform": "3",
+    "sta": "18:41",
+    "ata": "18:43",
+    "std": "18:44",
+    "etd": "On time",
+    "previousCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "London Kings Cross",
+            "crs": "KGX",
+            "st": "15:30",
+            "at": "On time"
+          },
+          {
+            "locationName": "Peterborough",
+            "crs": "PBO",
+            "st": "16:18",
+            "at": "16:21"
+          },
+          {
+            "locationName": "Newark North Gate",
+            "crs": "NNG",
+            "st": "16:46",
+            "at": "16:48"
+          },
+          {
+            "locationName": "Doncaster",
+            "crs": "DON",
+            "st": "17:10",
+            "at": "On time"
+          },
+          {
+            "locationName": "York",
+            "crs": "YRK",
+            "st": "17:35",
+            "at": "On time"
+          },
+          {
+            "locationName": "Northallerton",
+            "crs": "NTR",
+            "st": "17:56",
+            "at": "17:58"
+          },
+          {
+            "locationName": "Darlington",
+            "crs": "DAR",
+            "st": "18:09",
+            "at": "18:14"
+          },
+          {
+            "locationName": "Durham",
+            "crs": "DHM",
+            "st": "18:27",
+            "at": "18:32"
+          }
+        ]
+      }
+    },
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Alnmouth",
+            "crs": "ALM",
+            "st": "19:09",
+            "et": "On time"
+          },
+          {
+            "locationName": "Edinburgh",
+            "crs": "EDB",
+            "st": "20:15",
+            "et": "On time"
+          },
+          {
+            "locationName": "Haymarket",
+            "crs": "HYM",
+            "st": "20:23",
+            "et": "On time"
+          },
+          {
+            "locationName": "Motherwell",
+            "crs": "MTH",
+            "st": "21:01",
+            "et": "On time"
+          },
+          {
+            "locationName": "Glasgow Central",
+            "crs": "GLC",
+            "st": "21:26",
+            "et": "On time"
+          }
+        ]
+      }
+    }
+  }
+}

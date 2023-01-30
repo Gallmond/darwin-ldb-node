@@ -1,0 +1,84 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-27T18:44:18.287Z",
+    "serviceType": "train",
+    "locationName": "Newcastle",
+    "crs": "NCL",
+    "operator": "TransPennine Express",
+    "operatorCode": "TP",
+    "rsid": "TP515500",
+    "length": "5",
+    "platform": "1",
+    "std": "19:06",
+    "etd": "On time",
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Chester-le-Street",
+            "crs": "CLS",
+            "st": "19:14",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Durham",
+            "crs": "DHM",
+            "st": "19:21",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "York",
+            "crs": "YRK",
+            "st": "20:02",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Leeds",
+            "crs": "LDS",
+            "st": "20:27",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Huddersfield",
+            "crs": "HUD",
+            "st": "20:47",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Manchester Victoria",
+            "crs": "MCV",
+            "st": "21:22",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Newton-le-Willows",
+            "crs": "NLW",
+            "st": "21:40",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Lea Green",
+            "crs": "LEG",
+            "st": "21:46",
+            "et": "On time",
+            "length": "5"
+          },
+          {
+            "locationName": "Liverpool Lime Street",
+            "crs": "LIV",
+            "st": "22:05",
+            "et": "On time",
+            "length": "5"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -2,10 +2,12 @@ import { arrayWrap } from '../utils'
 import SoapConnector from './SoapConnector'
 
 import { CallingPointResult,
+    CallingPointsContainerResult,
     CallingPointWrapperResult,
     ConnectorInterface,
     HasConnector,
     PlainObj,
+    ServiceDetailsResult,
     ServiceLocationResult,
     StationBoardInput,
     StationBoardResult,
@@ -20,6 +22,7 @@ import type {
     ArrivalsAndDeparturesResponse,
     DarwinOptions
 } from './darwin-types'
+import TestConnector from './TestConnector'
 
 class Darwin implements HasConnector{
     initialised = false
@@ -110,7 +113,9 @@ class Darwin implements HasConnector{
             }
 
             if(typeof obj[crs] !== 'undefined'){
-                throw new Error('Duplicate origin or destination')
+                const msg = 'Duplicate origin or destination'
+                console.error(msg, {crs, obj, location})
+                throw new Error()
             }
 
             obj[crs] = location
@@ -136,76 +141,93 @@ class Darwin implements HasConnector{
         }
     }
 
-    private formatTrainServiceCallingPoints(service: TrainServiceResult){
+    /**
+     * Transforms the SOAP-response calling point wrapping into something more
+     * usable
+     */
+    private unWrapCallingPoints(serviceCallingPoints: CallingPointsContainerResult){
         
         /**
-         * these points all have annoying wrapping. Lets transform them to a 
-         * simple array where each entry is an array of calling points.
-         * 
-         * Both origin and destination use the same format so we can use this
-         * helper function 
+         * This is now
+         * {callingPoint: CallingPointResult | CallingPointResult[] }[]
          */
-        const formatPointsGeneric = (dataArray: CallingPointWrapperResult[]) => {
-            return dataArray.map(element =>{
-                const data = arrayWrap<CallingPointResult>( element.callingPoint )
-                return data.map(datum => {
-                    return {
-                        locationName: datum.locationName ?? null,
-                        crs: datum.crs ?? null,
-                        st: datum.st ?? null,
-                        et: datum.et ?? null,
-                        at: datum.at ?? null,
-                        isCancelled: datum.isCancelled ?? null,
-                        length: datum.length ?? null,
-                        detachFront: datum.detachFront ?? null,
-                        adhocAlerts: datum.adhocAlerts ?? null,
-                    } as CallingPointLocation
-                })
-            })
-        }
-        const prevPointsSet = arrayWrap<CallingPointWrapperResult>( service.previousCallingPoints?.callingPointList ) 
-        const subsequentPointsSet = arrayWrap<CallingPointWrapperResult>( service.subsequentCallingPoints?.callingPointList ) 
-        
-        const basicPreviousArray = formatPointsGeneric( prevPointsSet )
-        const basicNextArray = formatPointsGeneric( subsequentPointsSet )
+        const callingPointsList = arrayWrap<CallingPointWrapperResult>( serviceCallingPoints.callingPointList )  
 
         /**
-         * A note on the order of the calling points
-         * - they are in chronological order in both arrays
-         * - eg an Edinburgh -> London KGX services listed at newcastle will have
-         * - Aberdeen as first and Bewrick as last elements of the previous array
-         * - Darlington as first and KGX as last elements of the next array
+         * This is now
+         * CallingPointResult[][]
          */
-        const reducePoints = (carry: Record<CRS, CallingPointLocation[]>, set: CallingPointLocation[], type: 'from' | 'to') => {
-            if(set.length === 0) return carry
+        const callingPointsSets = callingPointsList.map(datum => {
+            return arrayWrap<CallingPointResult>( datum.callingPoint )
+        })
+
+        /**
+         * This is now 
+         * CallingPointLocation[][]
+         */
+        const formattedPointsSets = callingPointsSets.map(datum => {
+            return datum.map(data => {
+                return {
+                    locationName: data.locationName ?? null,
+                    crs: data.crs ?? null,
+                    st: data.st ?? null,
+                    et: data.et ?? null,
+                    at: data.at ?? null,
+                    isCancelled: data.isCancelled ?? null,
+                    length: data.length ?? null,
+                    detachFront: data.detachFront ?? null,
+                    adhocAlerts: data.adhocAlerts ?? null,
+                } as CallingPointLocation
+            })
+        })
+
+        return formattedPointsSets
+    }
+
+    /**
+     * Takes an array of calling point location arrays and returns an object like:
+     * {
+     *   'KGX': [{}, {}, {}],
+     *   'NCL': [{},{},{},{}]
+     * }
+     * 
+     * Note:
+     * - Here {} represents a CallingPointLocation
+     * - If type is 'to' the key will be the last element of the array
+     * - It type is 'from' the key will be the first element of the array
+     */
+    private formatToCallingPoints(callingPointLocationsArray: CallingPointLocation[][], type: 'to' | 'from'): Record<CRS, CallingPointLocation[]>
+    {
+        return callingPointLocationsArray.reduce((carry, callingPointLocations) => {
+            if(callingPointLocations.length === 0) return carry
 
             const isOrigin = type === 'from'
 
             const crs = (isOrigin
-                ? set[ 0 ].crs
-                : set[ set.length - 1 ].crs) ?? '???'
+                ? callingPointLocations[ 0 ].crs
+                : callingPointLocations[ callingPointLocations.length - 1 ].crs) ?? '???'
 
             if(typeof carry[ crs ] !== 'undefined'){
                 const msg = `Duplicate ${(isOrigin ? 'origin' : 'destination')} encountered`
-                console.error(msg, service)
+                console.error(msg, {callingPointLocationsArray, type, crs})
                 throw new Error(msg)
             }
 
-            carry[ crs ] = set  
+            carry[ crs ] = callingPointLocations  
 
             return carry
-        }
-
-        const from = basicPreviousArray.reduce((carry, set) => {
-            return reducePoints(carry, set, 'from')
         }, {} as Record<CRS, CallingPointLocation[]>)
+    }
 
-        const to = basicNextArray.reduce((carry, set) => {
-            return reducePoints(carry, set, 'to')
-        }, {} as Record<CRS, CallingPointLocation[]>)
+    private formatTrainServiceCallingPoints(service: TrainServiceResult){
+        const basicPreviousArray = this.unWrapCallingPoints( service.previousCallingPoints ?? {callingPointList: []} )
+        const basicNextArray = this.unWrapCallingPoints( service.subsequentCallingPoints ?? {callingPointList: []} )
+
+        const from = this.formatToCallingPoints( basicPreviousArray, 'from' )
+        const to = this.formatToCallingPoints( basicNextArray, 'to' )
 
         return {
-            to, from
+            from, to
         }
     }
 
@@ -238,6 +260,20 @@ class Darwin implements HasConnector{
                 callingPoints: {to, from},
             }
         })
+    }
+
+    async serviceDetails(serviceID: string): Promise<PlainObj>
+    {
+        const callPath = 'ldb.LDBServiceSoap12.GetServiceDetails'
+        const results = await this.connector.call(callPath, {serviceID}) as PlainObj
+
+        const result = (results.GetServiceDetailsResult
+            ? results.GetServiceDetailsResult
+            : this.failedParse(callPath, results)) as GetServ
+
+        TestConnector.createStub(callPath, {serviceID}, results)
+
+        return results
     }
 
     async arrivalsAndDepartures(options: StationBoardInput): Promise<ArrivalsAndDeparturesResponse>{
