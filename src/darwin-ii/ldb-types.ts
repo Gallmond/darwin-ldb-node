@@ -20,7 +20,7 @@ export type CallingPointResult = {
     // A flag to indicate that this service is cancelled at this location.
     isCancelled?: boolean
     // The train length (number of units) at this location. If not supplied, or zero, the length is unknown.
-    length?: number
+    length?: string
     // True if the service detaches units from the front at this location.
     detachFront?: boolean
     // A list of Adhoc Alerts (strings) for this CallingPoint.
@@ -105,8 +105,8 @@ export interface ServiceDetailsResult{
     crs: CRS
     operator: string
     operatorCode: string
-    length: number
-    platform: number
+    length: string
+    platform: string
     sta: Time
     eta?: Time
     ata?: Time
@@ -157,6 +157,7 @@ interface HasConnector{
 }
 
 interface ConnectorInterface{
+    getClient: () => unknown
     call: (callPath: string, args: PlainObj) => Promise<unknown>
     init: () => Promise<void>
     initialised: boolean

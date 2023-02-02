@@ -16,6 +16,8 @@ class SoapConnector implements ConnectorInterface{
         this.accessToken = accessToken
     }
 
+    getClient = () => this.client
+
     get client(): soap.Client
     {
         if(this.soapClient === null) throw new Error('Client not initialised')

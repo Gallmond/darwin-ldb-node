@@ -4,6 +4,7 @@ const fs_1 = require("fs");
 const crypto_1 = require("crypto");
 class TestConnector {
     initialised = false;
+    getClient = () => { return {}; };
     async init() {
         this.initialised = true;
     }
@@ -20,7 +21,7 @@ class TestConnector {
         const fileName = TestConnector.getStubFileName(callPath, args);
         // do not overwrite existing stubs by default
         if (overWriteExisting === false && (0, fs_1.existsSync)(fileName)) {
-            return;
+            return fileName;
         }
         try {
             (0, fs_1.writeFileSync)(fileName, fileData);
@@ -29,6 +30,7 @@ class TestConnector {
             console.error(`failed writing ${fileName}`, { error, callPath, args });
             throw error;
         }
+        return fileName;
     }
     static getStub = (callPath, args) => {
         const fileName = TestConnector.getStubFileName(callPath, args);

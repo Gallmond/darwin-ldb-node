@@ -1,3 +1,36 @@
+type GenericObject = {[s: string]: unknown}
+
+/**
+ * It's not clear what format the SOAP service returns maybe boolean values as
+ * so we can do some best-guesses here
+ */
+export const boolify = (variable: unknown): boolean | null => {
+    const type = typeof variable
+    
+    if(type === 'boolean' ) return variable as boolean
+
+    if(type === 'string'){
+        const str = (variable as string).toLowerCase()
+        if(str === 'true') return true
+        if(str === 'false') return false
+    }
+
+    return null
+}
+
+export const objectOnly = <Type extends GenericObject>(obj: Type, ...only: string[]): GenericObject => {
+    const type = typeof obj
+    if(type !== 'object') throw new Error(`cannot iterate on ${type}`)
+    
+    return Object.entries(obj).reduce((carry, keyVal) => {
+        const [key, val] = keyVal
+        if(only.includes(key)){
+            carry[key] = val
+        }
+
+        return carry
+    }, {} as GenericObject)
+}
 
 /**
  * takes any value and returns it array-wrapped.

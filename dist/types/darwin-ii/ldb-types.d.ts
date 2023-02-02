@@ -11,7 +11,7 @@ export type CallingPointResult = {
     et?: Time;
     at?: Time;
     isCancelled?: boolean;
-    length?: number;
+    length?: string;
     detachFront?: boolean;
     adhocAlerts?: string[];
 };
@@ -94,8 +94,8 @@ export interface ServiceDetailsResult {
     crs: CRS;
     operator: string;
     operatorCode: string;
-    length: number;
-    platform: number;
+    length: string;
+    platform: string;
     sta: Time;
     eta?: Time;
     ata?: Time;
@@ -130,6 +130,7 @@ interface HasConnector {
     set connector(connector: ConnectorInterface);
 }
 interface ConnectorInterface {
+    getClient: () => unknown;
     call: (callPath: string, args: PlainObj) => Promise<unknown>;
     init: () => Promise<void>;
     initialised: boolean;

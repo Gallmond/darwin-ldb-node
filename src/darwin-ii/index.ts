@@ -1,5 +1,6 @@
-import { arrayWrap } from '../utils'
+import { arrayWrap, boolify, objectOnly } from '../utils'
 import SoapConnector from './SoapConnector'
+
 
 import { CallingPointResult,
     CallingPointsContainerResult,
@@ -20,7 +21,9 @@ import type {
     OriginOrDestinationLocation,
     CallingPointLocation,
     ArrivalsAndDeparturesResponse,
-    DarwinOptions
+    DarwinOptions,
+    ServiceDetailsResponse,
+    CoachData,
 } from './darwin-types'
 import TestConnector from './TestConnector'
 
@@ -167,6 +170,8 @@ class Darwin implements HasConnector{
          */
         const formattedPointsSets = callingPointsSets.map(datum => {
             return datum.map(data => {
+                const length = parseInt(data.length ?? '')
+
                 return {
                     locationName: data.locationName ?? null,
                     crs: data.crs ?? null,
@@ -174,7 +179,7 @@ class Darwin implements HasConnector{
                     et: data.et ?? null,
                     at: data.at ?? null,
                     isCancelled: data.isCancelled ?? null,
-                    length: data.length ?? null,
+                    length: !isNaN(length) ? length : null,
                     detachFront: data.detachFront ?? null,
                     adhocAlerts: data.adhocAlerts ?? null,
                 } as CallingPointLocation
@@ -262,20 +267,87 @@ class Darwin implements HasConnector{
         })
     }
 
-    async serviceDetails(serviceID: string): Promise<PlainObj>
+    async serviceDetails(serviceID: string): Promise<ServiceDetailsResponse>
     {
         const callPath = 'ldb.LDBServiceSoap12.GetServiceDetails'
         const results = await this.connector.call(callPath, {serviceID}) as PlainObj
 
         const result = (results.GetServiceDetailsResult
             ? results.GetServiceDetailsResult
-            : this.failedParse(callPath, results))
+            : this.failedParse(callPath, results)) as ServiceDetailsResult
 
-        // const newFileName = TestConnector.createStub(callPath, {serviceID}, results)
+        const stationData = {
+            generatedAt: result.generatedAt,
+            locationName: result.locationName,
+            crs: result.crs,
+            operator: result.operator,
+            operatorCode: result.operatorCode,
+            length: Number.isNaN(parseInt(result.length)) ? null : parseInt(result.length),
+            platform: result.platform ?? null,
+            alerts: result.adhocAlerts ?? []
+        }
 
-        // console.log(`serviceId: ${serviceID}, file: ${newFileName}`)
+        const serviceTimeData = {
+            sta: result.sta ?? null,
+            eta: result.eta ?? null,
+            ata: result.ata ?? null,
+            std: result.std ?? null,
+            etd: result.etd ?? null,
+            atd: result.atd ?? null,
+        }
 
-        return result as PlainObj
+        const changeData = {
+            delayReason: result.delayReason ?? null,
+            
+            isCancelled: result.isCancelled ?? null,
+            cancelledReason: result.cancelReason ?? null,
+
+            isDiverted: result.divertedVia ? true : false,
+            divertedVia: result.divertedVia ?? null,
+            diversionReason: result.diversionReason ?? null,
+        }
+
+        const prevCallingPoints = this.unWrapCallingPoints(result.previousCallingPoints ?? {callingPointList: []})
+        const nextCallingPoints = this.unWrapCallingPoints(result.subsequentCallingPoints ?? {callingPointList: []})
+
+        const to = this.formatToCallingPoints( nextCallingPoints, 'to' )
+        const from = this.formatToCallingPoints( prevCallingPoints, 'from' )
+
+        const formation = {
+            isReverse: result.isReverseFormation ?? null,
+            category: {
+                loadingCode: result.formation?.loadingCategory.code ?? null,
+                colour: result.formation?.loadingCategory.colour ?? null,
+                image: result.formation?.loadingCategory.image ?? null
+            },
+            coaches: (result.formation?.coaches ?? []).reduce((carry, current) => {
+                const thisCoach = {
+                    class: current.coachClass,
+                    loading: current.loading,
+                    loadingSpecified: boolify(current.loadingSpecified) ?? false,
+                    number: current.number,
+                    toilet: {
+                        status: current.toilet.status,
+                        type: current.toilet.value,
+                    }
+                }
+
+                carry.push(thisCoach)
+                return carry
+            }, [] as CoachData[])
+        }
+
+        return {
+            ...stationData,
+            ...serviceTimeData,
+            ...changeData,
+
+            splits: result.detachFront ?? null,
+
+            callingPoints: {to, from},
+
+            formation: formation
+        }
     }
 
     async arrivalsAndDepartures(options: StationBoardInput): Promise<ArrivalsAndDeparturesResponse>{

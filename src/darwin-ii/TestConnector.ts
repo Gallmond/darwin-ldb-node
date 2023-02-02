@@ -6,6 +6,8 @@ class TestConnector implements ConnectorInterface{
     
     initialised = false
 
+    getClient = () => {return {}}
+
     async init(): Promise<void>
     {
         this.initialised = true
@@ -31,7 +33,7 @@ class TestConnector implements ConnectorInterface{
 
         // do not overwrite existing stubs by default
         if(overWriteExisting === false && existsSync(fileName)){
-            return
+            return fileName
         }
 
         try{

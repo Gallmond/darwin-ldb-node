@@ -1,0 +1,104 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-30T17:17:01.920Z",
+    "serviceType": "train",
+    "locationName": "Gatwick Airport",
+    "crs": "GTW",
+    "operator": "Thameslink",
+    "operatorCode": "TL",
+    "isCancelled": true,
+    "cancelReason": "This train has been cancelled because of more trains than usual needing repairs at the same time",
+    "std": "17:23",
+    "etd": "Cancelled",
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "East Croydon",
+            "crs": "ECR",
+            "st": "17:38",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "London Bridge",
+            "crs": "LBG",
+            "st": "17:54",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "London Blackfriars",
+            "crs": "BFR",
+            "st": "18:01",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "City Thameslink",
+            "crs": "CTK",
+            "st": "18:03",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Farringdon",
+            "crs": "ZFD",
+            "st": "18:06",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "London St Pancras (Intl)",
+            "crs": "STP",
+            "st": "18:10",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "St Albans",
+            "crs": "SAC",
+            "st": "18:30",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Harpenden",
+            "crs": "HPD",
+            "st": "18:36",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Luton Airport Parkway",
+            "crs": "LTN",
+            "st": "18:41",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Luton",
+            "crs": "LUT",
+            "st": "18:45",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Leagrave",
+            "crs": "LEA",
+            "st": "18:50",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Harlington",
+            "crs": "HLN",
+            "st": "18:55",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Flitwick",
+            "crs": "FLT",
+            "st": "18:59",
+            "et": "Cancelled"
+          },
+          {
+            "locationName": "Bedford",
+            "crs": "BDM",
+            "st": "19:12",
+            "et": "Cancelled"
+          }
+        ]
+      }
+    }
+  }
+}

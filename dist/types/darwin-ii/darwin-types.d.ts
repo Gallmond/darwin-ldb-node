@@ -75,4 +75,53 @@ export interface ArrivalsAndDeparturesResponse {
     crs: CRS;
     trainServices: TrainService[];
 }
+type CoachClass = 'First' | 'Mixed' | 'Standard' | string;
+interface CoachToilet {
+    type: 'Unknown' | 'None' | 'Standard' | 'Accessible';
+    status: 'Unknown' | 'InService' | 'NotInService';
+}
+export interface CoachData {
+    class: CoachClass;
+    loading: number;
+    loadingSpecified: boolean;
+    number: string;
+    toilet: CoachToilet;
+}
+export interface ServiceDetailsResponse {
+    generatedAt: Date;
+    locationName: string;
+    crs: CRS;
+    operator: string;
+    operatorCode: string;
+    length: number | null;
+    platform: string | null;
+    sta: null | Time;
+    eta: null | Time;
+    ata: null | Time;
+    std: null | Time;
+    etd: null | Time;
+    atd: null | Time;
+    callingPoints: {
+        from: CallingPointsHolder;
+        to: CallingPointsHolder;
+    };
+    delayReason: null | string;
+    isCancelled: null | boolean;
+    cancelledReason: null | string;
+    isDiverted: null | boolean;
+    divertedVia: null | string;
+    diversionReason: null | string;
+    alerts: string[];
+    splits: null | boolean;
+    formation: {
+        isReverse: null | boolean;
+        category: {
+            loadingCode: string | null;
+            colour: string | null;
+            image: string | null;
+        };
+        coaches: CoachData[];
+    };
+}
+export {};
 //# sourceMappingURL=darwin-types.d.ts.map

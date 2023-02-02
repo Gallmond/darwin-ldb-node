@@ -4,6 +4,22 @@ import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin from '../../src/darwin-ii'
 import { CallingPointLocation } from '../../src/darwin-ii/darwin-types'
 import { PlainObj } from '../../src/darwin-ii/ldb-types'
+import { Client } from 'soap'
+import { writeFileSync } from 'fs'
+
+type JSTypes = 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function' | null
+const assertTypeOrNull = (variable: unknown, type: JSTypes) => {
+    if(variable === null){
+        expect(variable).toBeNull()
+        return
+    }
+
+    expect(typeof variable).toBe(type)
+}
+
+const assertStringOrNull = (variable: unknown) => {
+    assertTypeOrNull(variable, 'string')
+}
 
 /**
  * fails if an object has a single undefined value
@@ -40,7 +56,21 @@ describe('Darwin-II Initialization', () => {
 
 describe('Darwin-II Implementation', () => {
 
-    test('Darwin.serviceDetails as expected', async () => {
+    test.skip('Darwin describe', async () => {
+        const realDarwin = await Darwin.make()
+        await realDarwin.init()
+
+        const inst = realDarwin.connector.getClient() as Client
+        const service = inst.describe()
+
+        const serviceJson = JSON.stringify(service, null, 2)
+        const fileName = __dirname + '/describe.json'
+        writeFileSync(fileName, serviceJson)
+
+        console.log({service})
+    })
+
+    test('Darwin.serviceDetails use case', async () => {
 
         const existingStubs = [
             {serviceId: '374388GTWK____', file: 'ldb.LDBServiceSoap12.GetServiceDetails.1de2118f911d4f90785fdccd64481f23.json'},
@@ -61,9 +91,61 @@ describe('Darwin-II Implementation', () => {
         const darwin = new Darwin()
         darwin.connector = testConnector
 
-        const stubbedResponse = await darwin.serviceDetails( '374388GTWK____' )
-        console.log(stubbedResponse)
+        const testForServiceId = async (serviceId: string) => {
+            // given an existing service
+            const serviceDetails = await darwin.serviceDetails(serviceId)
 
+            // ===== I should be able to get service details relative to 'this' station
+            // location, platform length
+            const { locationName, platform, length } = serviceDetails
+            expect(typeof locationName).toBe('string')
+            assertTypeOrNull(platform, 'string')
+            assertTypeOrNull(length, 'number')
+
+            // arrival times
+            const { eta, ata, sta } = serviceDetails
+            assertStringOrNull(eta)
+            assertStringOrNull(ata)
+            assertStringOrNull(sta)
+
+            // departure times
+            const { etd, atd, std } = serviceDetails
+            assertStringOrNull(etd)
+            assertStringOrNull(atd)
+            assertStringOrNull(std)
+
+            // ===== and the previous and next calling points 
+            const next = serviceDetails.callingPoints.to
+            expect(typeof next).toBe('object')
+
+            Object.keys(next).forEach(crs => {
+                const points = next[crs]
+                points.forEach(point => {
+                    expect(typeof point.locationName).toBe('string')
+                    expect(typeof point.crs).toBe('string')
+                    expect(typeof point.st).toBe('string')
+                    assertStringOrNull(point.et)
+                    assertStringOrNull(point.at)
+                    assertTypeOrNull(point.isCancelled, 'boolean')
+                    assertTypeOrNull(point.detachFront, 'boolean')
+                    assertTypeOrNull(point.length, 'number')
+                    expect(Array.isArray(point.adhocAlerts) || point.adhocAlerts === null).toBe(true)
+                })
+            })
+
+            return true
+        }
+
+        const serviceIds = existingStubs.reduce((carry, current) => {
+            carry.push(current.serviceId)
+            return carry
+        }, [] as string[])
+
+        serviceIds.forEach(async serviceId => {
+            const success = await testForServiceId(serviceId)
+            expect(success).toBe(true)
+        })
+        
     })
 
     test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
@@ -346,6 +428,11 @@ describe('Darwin-II Connectors', () => {
         const testConnector = new TestConnector()
         await testConnector.init()
 
+        // disable the console.error for this test
+        const consoleSpy = jest.spyOn(console, 'error').mockImplementation(()=>{
+            // do nothing
+        })
+
         // we have a stub for this path but not the args, this should fail
         const callPath = 'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails'
         const args = {crs: 'FOO'}
@@ -353,6 +440,9 @@ describe('Darwin-II Connectors', () => {
         expect(async () => {
             await testConnector.call(callPath, args)
         }).rejects.toThrow()
+
+        // re-enable console.error
+        consoleSpy.mockRestore()
     })
 
     test('Test Connector existing stub', async () => {

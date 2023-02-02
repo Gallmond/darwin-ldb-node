@@ -33,6 +33,7 @@ class SoapConnector {
         this.wsdlUrl = wsdlUrl;
         this.accessToken = accessToken;
     }
+    getClient = () => this.client;
     get client() {
         if (this.soapClient === null)
             throw new Error('Client not initialised');

@@ -6,6 +6,7 @@ declare class SoapConnector implements ConnectorInterface {
     soapClient: soap.Client | null;
     initialised: boolean;
     constructor(wsdlUrl: string, accessToken: string);
+    getClient: () => soap.Client;
     get client(): soap.Client;
     init(): Promise<void>;
     private getServiceMethod;

@@ -1,0 +1,92 @@
+{
+  "GetServiceDetailsResult": {
+    "generatedAt": "2023-01-30T17:17:01.862Z",
+    "serviceType": "train",
+    "locationName": "Gatwick Airport",
+    "crs": "GTW",
+    "operator": "Great Western Railway",
+    "operatorCode": "GW",
+    "rsid": "GW533500",
+    "platform": "2",
+    "std": "17:29",
+    "etd": "17:34",
+    "subsequentCallingPoints": {
+      "callingPointList": {
+        "callingPoint": [
+          {
+            "locationName": "Redhill",
+            "crs": "RDH",
+            "st": "17:41",
+            "et": "17:44"
+          },
+          {
+            "locationName": "Reigate",
+            "crs": "REI",
+            "st": "17:50",
+            "et": "On time"
+          },
+          {
+            "locationName": "Dorking Deepdene",
+            "crs": "DPD",
+            "st": "17:57",
+            "et": "On time"
+          },
+          {
+            "locationName": "Guildford",
+            "crs": "GLD",
+            "st": "18:18",
+            "et": "On time"
+          },
+          {
+            "locationName": "Ash",
+            "crs": "ASH",
+            "st": "18:28",
+            "et": "On time"
+          },
+          {
+            "locationName": "North Camp",
+            "crs": "NCM",
+            "st": "18:33",
+            "et": "On time"
+          },
+          {
+            "locationName": "Farnborough North",
+            "crs": "FNN",
+            "st": "18:37",
+            "et": "On time"
+          },
+          {
+            "locationName": "Blackwater",
+            "crs": "BAW",
+            "st": "18:41",
+            "et": "On time"
+          },
+          {
+            "locationName": "Sandhurst",
+            "crs": "SND",
+            "st": "18:45",
+            "et": "On time"
+          },
+          {
+            "locationName": "Crowthorne",
+            "crs": "CRN",
+            "st": "18:49",
+            "et": "On time"
+          },
+          {
+            "locationName": "Wokingham",
+            "crs": "WKM",
+            "st": "18:55",
+            "et": "On time"
+          },
+          {
+            "locationName": "Reading",
+            "crs": "RDG",
+            "st": "19:09",
+            "et": "On time"
+          }
+        ]
+      }
+    }
+  }
+}
