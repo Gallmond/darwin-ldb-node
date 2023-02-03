@@ -1,5 +1,5 @@
 {
-  "name": "allmond/darwin-ldb-node",
+  "name": "darwin-ldb-node",
   "version": "0.0.1",
   "description": "Helper package for consuming the Live Departure Boards SOAP Service",
   "main": "dist/index.js",
