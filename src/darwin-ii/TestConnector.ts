@@ -1,5 +1,5 @@
 import { PlainObj, ConnectorInterface } from './ldb-types'
-import { existsSync, readFileSync, writeFileSync } from 'fs'
+import { existsSync, writeFileSync } from 'fs'
 import { createHash } from 'crypto'
 
 class TestConnector implements ConnectorInterface{

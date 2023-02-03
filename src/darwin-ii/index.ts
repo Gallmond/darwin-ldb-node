@@ -1,6 +1,5 @@
-import { arrayWrap, boolify, objectOnly } from '../utils'
+import { arrayWrap, boolify } from '../utils'
 import SoapConnector from './SoapConnector'
-
 
 import { CallingPointResult,
     CallingPointsContainerResult,
@@ -25,7 +24,6 @@ import type {
     ServiceDetailsResponse,
     CoachData,
 } from './darwin-types'
-import TestConnector from './TestConnector'
 
 class Darwin implements HasConnector{
     initialised = false

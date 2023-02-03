@@ -1,71 +1,28 @@
+import TestConnector from '../../../src/darwin-ii/TestConnector'
+import Darwin from '../../../src/darwin-ii'
+import { hasUndefined } from '../../../src/utils'
+import type { CallingPointLocation } from '../../../src/darwin-ii/darwin-types'
 
-import TestConnector from '../../src/darwin-ii/TestConnector'
-import Darwin from '../../src/darwin-ii'
-import { CallingPointLocation } from '../../src/darwin-ii/darwin-types'
-import { Client } from 'soap'
-import { readdirSync, writeFileSync } from 'fs'
-import { hasUndefined } from '../../src/utils'
+describe('Darwin.arrivalsAndDepartures', () => {
 
-const clogTime = (start: Date, message: string) => {
-    const now = new Date().valueOf()
-    const diff = now - (start.valueOf())
-    const seconds = diff / 1000
-
-    console.log(`T ${seconds} - ${message}`)
-}
-
-describe('Darwin-II Implementation', () => {
-
-    test.skip('Darwin describe', async () => {
-        const realDarwin = await Darwin.make()
-        await realDarwin.init()
-
-        const inst = realDarwin.connector.getClient() as Client
-        const service = inst.describe()
-
-        const serviceJson = JSON.stringify(service, null, 2)
-        const fileName = __dirname + '/describe.json'
-        writeFileSync(fileName, serviceJson)
-
-        console.log({service})
-    })
-
-    // 2 ms
-    test('test debug one', async () => {
-        expect(true).toBe(true)
-    })
-
-    // 
-    test('test debug two', async () => {
-        const files = readdirSync(__dirname, {encoding: 'utf-8'})
-        console.log({files})
-        expect(Array.isArray(files)).toBe(true)
-        console.log('end of test!')
-    })
-
-    test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
+    test('arrivalsAndDepartures Service Calling Points', async () => {
         const start = new Date()
 
         const testConnector = new TestConnector()
         await testConnector.init()
 
-        clogTime(start, 'test connector initialised')
-
         const darwin = new Darwin()
         darwin.connector = testConnector
 
-        clogTime(start, 'darwin created')
 
         const result = await darwin.arrivalsAndDepartures({
             crs: 'NCL',
         })
 
-        clogTime(start, 'got arrivals and departues result')
 
         const containsUndefined = hasUndefined(result)
         expect(containsUndefined).toBe(false)
 
-        clogTime(start, 'asserted no undefined properties')
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
@@ -145,10 +102,9 @@ describe('Darwin-II Implementation', () => {
             })
         })
 
-        clogTime(start, 'end of the test')
     })
 
-    test('Darwin.arrivalsAndDepartures Service Origins and Destinations', async () => {
+    test('arrivalsAndDepartures Service Origins and Destinations', async () => {
         const testConnector = new TestConnector()
         await testConnector.init()
 
@@ -202,11 +158,11 @@ describe('Darwin-II Implementation', () => {
                 expect(location).toHaveProperty('via')
                 expect(location).toHaveProperty('unreachable')
             })
-
         })
+
     })
 
-    test('Darwin.arrivalsAndDepartures Service Details', async () => {
+    test('arrivalsAndDepartures Service Details', async () => {
         const testConnector = new TestConnector()
         await testConnector.init()
 
@@ -230,10 +186,9 @@ describe('Darwin-II Implementation', () => {
             expect(trainService).toHaveProperty('operatorCode')
             expect(trainService).toHaveProperty('serviceID')
         })
-
     })
 
-    test('Darwin.arrivalsAndDepartures Station Details', async () => {
+    test('arrivalsAndDepartures Station Details', async () => {
 
         const testConnector = new TestConnector()
         await testConnector.init()
@@ -258,6 +213,7 @@ describe('Darwin-II Implementation', () => {
         expect(Array.isArray(result.trainServices)).toBe(true)
         expect(result.trainServices.length > 0).toBe(true)
 
-    })        
+    })      
+
 
 })

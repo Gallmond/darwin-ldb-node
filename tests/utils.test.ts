@@ -23,6 +23,7 @@ describe('Util functions work as expected', () => {
         expect(boolify('True')).toBe(true)
         expect(boolify('true')).toBe(true)
         expect(boolify(true)).toBe(true)
+        
         expect(boolify('False')).toBe(false)
         expect(boolify('false')).toBe(false)
         expect(boolify(false)).toBe(false)

@@ -2,41 +2,54 @@ import dotenv from 'dotenv'
 import SoapConnector from '../../../src/darwin-ii/SoapConnector'
 import TestConnector from '../../../src/darwin-ii/TestConnector'
 import type { PlainObj } from '../../../src/darwin-ii/ldb-types'
+dotenv.config({path: __dirname + '/../../.env.test'})
+
+const {
+    LDB_DARWIN_ACCESS_TOKEN, LDB_DARWIN_WSDL_URL
+} = process.env
+
+/**
+ * some specific services to test for
+ */
+const expectedLDB12Services = [
+    'GetArrDepBoardWithDetails',
+    'GetDepBoardWithDetails',
+    'GetDepartureBoard',
+]
+
+const getSoapConnector = async (): Promise<SoapConnector> => {
+    const wsdlUrl = LDB_DARWIN_WSDL_URL as string
+    const accessToken = LDB_DARWIN_ACCESS_TOKEN as string
+
+    // able to connect and describe
+    const soapConnector = new SoapConnector(wsdlUrl, accessToken)
+    await soapConnector.init()
+
+    return soapConnector
+}
 
 describe('Darwin-II Connectors', () => {
 
-    dotenv.config({path: __dirname + '/../../.env.test'})
+    let consoleSpy: jest.SpyInstance | undefined
 
-    const {
-        LDB_DARWIN_ACCESS_TOKEN, LDB_DARWIN_WSDL_URL
-    } = process.env
+    beforeAll(() => {
+        consoleSpy = jest.spyOn(console, 'error').mockImplementation(()=>{
+            // do nothing
+        })
+    })
 
-    const getSoapConnector = async (): Promise<SoapConnector> => {
-        const wsdlUrl = LDB_DARWIN_WSDL_URL as string
-        const accessToken = LDB_DARWIN_ACCESS_TOKEN as string
-    
-        // able to connect and describe
-        const soapConnector = new SoapConnector(wsdlUrl, accessToken)
-        await soapConnector.init()
-    
-        return soapConnector
-    }
+    afterAll(() => {
+        // re-enable console.error
+        if(consoleSpy) consoleSpy.mockRestore()
+    })
 
-    /**
-     * some specific services to test for
-     */
-    const expectedLDB12Services = [
-        'GetArrDepBoardWithDetails',
-        'GetDepBoardWithDetails',
-        'GetDepartureBoard',
-    ]
 
     test('Env variables', () => {
         expect(LDB_DARWIN_ACCESS_TOKEN).not.toBeUndefined()
         expect(LDB_DARWIN_WSDL_URL).not.toBeUndefined()
     })
 
-    test('SOAP Connector', async () => {
+    test('SOAP Connector can describe', async () => {
         const soapConnector = await getSoapConnector()
 
         // check we got an object and some services
@@ -56,7 +69,7 @@ describe('Darwin-II Connectors', () => {
      * 
      * This makes a real request
      */
-    test('BUILD STUBS', async () => {
+    test.skip('BUILD STUBS', async () => {
         const callPaths = {
             'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails': {crs: 'NCL'},
             'ldb.LDBServiceSoap12.GetDepBoardWithDetails': {crs: 'KGX'},
@@ -77,21 +90,15 @@ describe('Darwin-II Connectors', () => {
         const testConnector = new TestConnector()
         await testConnector.init()
 
-        // disable the console.error for this test
-        const consoleSpy = jest.spyOn(console, 'error').mockImplementation(()=>{
-            // do nothing
-        })
-
         // we have a stub for this path but not the args, this should fail
         const callPath = 'ldb.LDBServiceSoap12.GetArrDepBoardWithDetails'
         const args = {crs: 'FOO'}
 
         expect(async () => {
             await testConnector.call(callPath, args)
+            expect(consoleSpy).toHaveBeenCalledTimes(1)
         }).rejects.toThrow()
 
-        // re-enable console.error
-        consoleSpy.mockRestore()
     })
 
     test('Test Connector existing stub', async () => {

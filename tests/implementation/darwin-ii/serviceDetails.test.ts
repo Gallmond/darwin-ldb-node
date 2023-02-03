@@ -87,10 +87,10 @@ describe('Darwin.serviceDetails', () => {
             return carry
         }, [] as string[])
     
-        serviceIds.forEach(async serviceId => {
-            const success = await testForServiceId(serviceId)
+        const successes = await Promise.all(serviceIds.map(testForServiceId))
+        for(const success of successes){
             expect(success).toBe(true)
-        })
+        }
         
     })
 })
