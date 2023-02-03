@@ -1,6 +1,39 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.flattenObject = exports.arrayWrap = exports.objectOnly = exports.boolify = void 0;
+exports.flattenObject = exports.arrayWrap = exports.objectOnly = exports.boolify = exports.hasUndefined = void 0;
+/**
+ * returns true if val is undefined, or if any nested element of an array or
+ * object contains an undefined element or property value
+ */
+const hasUndefined = (val) => {
+    if (val === undefined)
+        return true;
+    /**
+     * Check each element of an array
+     */
+    if (Array.isArray(val)) {
+        val.forEach(element => {
+            if ((0, exports.hasUndefined)(element)) {
+                return true;
+            }
+        });
+    }
+    /**
+     * check each element of an object.
+     * Note: in JS null is an object for some reason
+     */
+    if (val !== null && typeof val === 'object') {
+        const keyValues = Object.entries(val);
+        for (const keyValue of keyValues) {
+            const [, value] = keyValue;
+            if ((0, exports.hasUndefined)(value)) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
+exports.hasUndefined = hasUndefined;
 /**
  * It's not clear what format the SOAP service returns maybe boolean values as
  * so we can do some best-guesses here

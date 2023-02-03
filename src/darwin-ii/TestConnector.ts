@@ -46,7 +46,7 @@ class TestConnector implements ConnectorInterface{
         return fileName
     }
 
-    static getStub = async (callPath: string, args: PlainObj): PlainObj => 
+    static getStub = async (callPath: string, args: PlainObj): Promise<PlainObj> => 
     {
         const fileName = TestConnector.getStubFileName(callPath, args)
 

@@ -1,6 +1,41 @@
 type GenericObject = {[s: string]: unknown}
 
 /**
+ * returns true if val is undefined, or if any nested element of an array or 
+ * object contains an undefined element or property value
+ */
+export const hasUndefined = (val: unknown) => {
+    if(val === undefined) return true
+
+    /**
+     * Check each element of an array
+     */
+    if(Array.isArray(val)){
+        val.forEach(element => {
+            if(hasUndefined(element)){
+                return true
+            }
+        })
+    }
+
+    /**
+     * check each element of an object.
+     * Note: in JS null is an object for some reason
+     */
+    if(val !== null && typeof val === 'object'){
+        const keyValues = Object.entries(val)
+        for(const keyValue of keyValues){
+            const [, value] = keyValue
+            if(hasUndefined(value)){
+                return true
+            }
+        }
+    }
+
+    return false
+}
+
+/**
  * It's not clear what format the SOAP service returns maybe boolean values as
  * so we can do some best-guesses here
  */

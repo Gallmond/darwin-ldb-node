@@ -2,6 +2,11 @@ type GenericObject = {
     [s: string]: unknown;
 };
 /**
+ * returns true if val is undefined, or if any nested element of an array or
+ * object contains an undefined element or property value
+ */
+export declare const hasUndefined: (val: unknown) => boolean;
+/**
  * It's not clear what format the SOAP service returns maybe boolean values as
  * so we can do some best-guesses here
  */

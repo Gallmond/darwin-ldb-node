@@ -1,6 +1,23 @@
-import { objectOnly, boolify } from '../src/utils'
+import { objectOnly, boolify, hasUndefined } from '../src/utils'
 
 describe('Util functions work as expected', () => {
+
+    test('hasUndefined', async () => {
+        const caseOne = null
+        expect(hasUndefined(caseOne)).toBe(false)
+
+        const caseTwo = {}
+        expect(hasUndefined(caseTwo)).toBe(false)
+
+        const caseThree = {foo: undefined}
+        expect(hasUndefined(caseThree)).toBe(true)
+
+        const caseFour = {foo: [undefined, undefined]}
+        expect(hasUndefined(caseFour)).toBe(true)
+
+        const caseFive = {foo: {bar: undefined}}
+        expect(hasUndefined(caseFive)).toBe(true)
+    })
 
     test('boolify', () => {
         expect(boolify('True')).toBe(true)

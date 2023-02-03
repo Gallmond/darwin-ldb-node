@@ -4,6 +4,7 @@ import Darwin from '../../src/darwin-ii'
 import { CallingPointLocation } from '../../src/darwin-ii/darwin-types'
 import { Client } from 'soap'
 import { readdirSync, writeFileSync } from 'fs'
+import { hasUndefined } from '../../src/utils'
 
 const clogTime = (start: Date, message: string) => {
     const now = new Date().valueOf()
@@ -13,58 +14,7 @@ const clogTime = (start: Date, message: string) => {
     console.log(`T ${seconds} - ${message}`)
 }
 
-/**
- * returns true if val is undefined, or if any nested element of an array or 
- * object contains an undefined element or property value
- */
-const hasUndefined = (val: unknown) => {
-    if(val === undefined) return true
-
-    /**
-     * Check each element of an array
-     */
-    if(Array.isArray(val)){
-        val.forEach(element => {
-            if(hasUndefined(element)){
-                return true
-            }
-        })
-    }
-
-    /**
-     * check each element of an object.
-     * Note: in JS null is an object for some reason
-     */
-    if(val !== null && typeof val === 'object'){
-        for(const key in val){
-            if(hasUndefined(val[key])){
-                return true
-            }
-        }
-    }
-
-    return false
-}
-
 describe('Darwin-II Implementation', () => {
-
-    test('hasUndefined', async () => {
-
-        const caseOne = null
-        expect(hasUndefined(caseOne)).toBe(false)
-
-        const caseTwo = {}
-        expect(hasUndefined(caseTwo)).toBe(false)
-
-        const caseThree = {foo: undefined}
-        expect(hasUndefined(caseThree)).toBe(true)
-
-        const caseFour = {foo: [undefined, undefined]}
-        expect(hasUndefined(caseFour)).toBe(true)
-
-        const caseFive = {foo: {bar: undefined}}
-        expect(hasUndefined(caseFive)).toBe(true)
-    })
 
     test.skip('Darwin describe', async () => {
         const realDarwin = await Darwin.make()
