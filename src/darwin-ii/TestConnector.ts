@@ -46,24 +46,24 @@ class TestConnector implements ConnectorInterface{
         return fileName
     }
 
-    static getStub = (callPath: string, args: PlainObj): PlainObj => 
+    static getStub = async (callPath: string, args: PlainObj): PlainObj => 
     {
         const fileName = TestConnector.getStubFileName(callPath, args)
 
         let data
         try{
-            data = readFileSync(fileName, {encoding: 'utf-8'})
+            data = await import(fileName)
         }catch(error){
             console.error(`Error reading ${fileName}`, {error, callPath, args})
             throw error
         }
 
-        return JSON.parse(data) as PlainObj
+        return data as PlainObj
     }
 
     async call(callPath: string, args: PlainObj): Promise<unknown>
     {
-        return TestConnector.getStub( callPath, args )
+        return await TestConnector.getStub( callPath, args )
     }
 }
 

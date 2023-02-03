@@ -3,36 +3,68 @@ import TestConnector from '../../src/darwin-ii/TestConnector'
 import Darwin from '../../src/darwin-ii'
 import { CallingPointLocation } from '../../src/darwin-ii/darwin-types'
 import { Client } from 'soap'
-import { writeFileSync } from 'fs'
+import { readdirSync, writeFileSync } from 'fs'
+
+const clogTime = (start: Date, message: string) => {
+    const now = new Date().valueOf()
+    const diff = now - (start.valueOf())
+    const seconds = diff / 1000
+
+    console.log(`T ${seconds} - ${message}`)
+}
 
 /**
- * fails if an object has a single undefined value
+ * returns true if val is undefined, or if any nested element of an array or 
+ * object contains an undefined element or property value
  */
-const noUndefinedProperties = (object: object) => {
-    Object.entries(object).forEach(keyVal => {
-        const [, val] = keyVal
+const hasUndefined = (val: unknown) => {
+    if(val === undefined) return true
 
-        // if this property is an object do the same
-        if(val !== null && typeof val === 'object'){
-            noUndefinedProperties(val)
+    /**
+     * Check each element of an array
+     */
+    if(Array.isArray(val)){
+        val.forEach(element => {
+            if(hasUndefined(element)){
+                return true
+            }
+        })
+    }
+
+    /**
+     * check each element of an object.
+     * Note: in JS null is an object for some reason
+     */
+    if(val !== null && typeof val === 'object'){
+        for(const key in val){
+            if(hasUndefined(val[key])){
+                return true
+            }
         }
+    }
 
-        // if this property is an array, do the same to each element
-        if(Array.isArray(val)){
-            val.forEach(element => {
-                if(val !== null && typeof val === 'object'){
-                    noUndefinedProperties(val)
-                }
-
-                expect(typeof element).not.toBe('undefined')
-            })
-        }
-
-        expect(typeof val).not.toBe('undefined')
-    })
+    return false
 }
 
 describe('Darwin-II Implementation', () => {
+
+    test('hasUndefined', async () => {
+
+        const caseOne = null
+        expect(hasUndefined(caseOne)).toBe(false)
+
+        const caseTwo = {}
+        expect(hasUndefined(caseTwo)).toBe(false)
+
+        const caseThree = {foo: undefined}
+        expect(hasUndefined(caseThree)).toBe(true)
+
+        const caseFour = {foo: [undefined, undefined]}
+        expect(hasUndefined(caseFour)).toBe(true)
+
+        const caseFive = {foo: {bar: undefined}}
+        expect(hasUndefined(caseFive)).toBe(true)
+    })
 
     test.skip('Darwin describe', async () => {
         const realDarwin = await Darwin.make()
@@ -48,18 +80,42 @@ describe('Darwin-II Implementation', () => {
         console.log({service})
     })
 
+    // 2 ms
+    test('test debug one', async () => {
+        expect(true).toBe(true)
+    })
+
+    // 
+    test('test debug two', async () => {
+        const files = readdirSync(__dirname, {encoding: 'utf-8'})
+        console.log({files})
+        expect(Array.isArray(files)).toBe(true)
+        console.log('end of test!')
+    })
+
     test('Darwin.arrivalsAndDepartures Service Calling Points', async () => {
+        const start = new Date()
+
         const testConnector = new TestConnector()
         await testConnector.init()
 
+        clogTime(start, 'test connector initialised')
+
         const darwin = new Darwin()
         darwin.connector = testConnector
+
+        clogTime(start, 'darwin created')
 
         const result = await darwin.arrivalsAndDepartures({
             crs: 'NCL',
         })
 
-        noUndefinedProperties(result)
+        clogTime(start, 'got arrivals and departues result')
+
+        const containsUndefined = hasUndefined(result)
+        expect(containsUndefined).toBe(false)
+
+        clogTime(start, 'asserted no undefined properties')
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
@@ -138,6 +194,8 @@ describe('Darwin-II Implementation', () => {
                 expect(point).toHaveProperty('adhocAlerts')
             })
         })
+
+        clogTime(start, 'end of the test')
     })
 
     test('Darwin.arrivalsAndDepartures Service Origins and Destinations', async () => {
@@ -151,7 +209,7 @@ describe('Darwin-II Implementation', () => {
             crs: 'NCL',
         })
 
-        noUndefinedProperties(result)
+        expect(hasUndefined(result)).toBe(false)
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
@@ -209,7 +267,7 @@ describe('Darwin-II Implementation', () => {
             crs: 'NCL',
         })
 
-        noUndefinedProperties(result)
+        expect(hasUndefined(result)).toBe(false)
 
         // those services have basic service data
         result.trainServices.forEach(trainService => {
@@ -239,7 +297,7 @@ describe('Darwin-II Implementation', () => {
         })
 
         // check there are no undefined properties, only allow null
-        noUndefinedProperties(result)
+        expect(hasUndefined(result)).toBe(false)
 
         // we got basic station data
         expect(new Date(result.generatedAt)).toBeInstanceOf(Date)
