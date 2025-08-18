@@ -1,4 +1,3 @@
-import Darwin from './darwin-ii'
-import SoapConnector from './darwin-ii/SoapConnector'
+import { Darwin } from "./Darwin/index.js";
 
-export {Darwin, SoapConnector}
+export { Darwin }

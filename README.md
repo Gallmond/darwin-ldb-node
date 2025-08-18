@@ -1,19 +1,14 @@
-//TODO
-- Add the serviceDetails method
-- Create example projects (list services at a station, list specific service details)
-- Pull out the response parsing into an injectable class that we can swap out if the service changes
-- More comprehensive test cases. Ideally some services with cancellations / diversions / service splits and joins.
-- Explain the tests and the test stubs. How to use it for expanding darwin-ldb-node
-- Maybe: automatically generate Types from the WSDL service description (did attempt this but I found that the service as described does not match the actual responses...)
-
 # darwin-ldb-node
 
-A helper module using Typescript and Jest to make the Live Departure Boards Web Service (LDBWS / OpenLDBWS) SOAP interface more user friendly [link](https://lite.realtime.nationalrail.co.uk/OpenLDBWS/)
+A more user friendly thin wrapper around the Live Departure Boards Web Service (LDBWS / OpenLDBWS) [SOAP interface](https://lite.realtime.nationalrail.co.uk/OpenLDBWS/)
 
 For example we can request arrivals and departures for trains from NCL (Newcastle) to King's Cross like so:
 
 ```ts
-const darwin = await Darwin.make()
+const darwin = await Darwin.make(
+	process.env.LDB_DARWIN_WSDL_URL
+	process.env.LDB_DARWIN_ACCESS_TOKEN
+)
 
 const result = await darwin.arrivalsAndDepartures({
     crs: 'NCL',
@@ -1046,40 +1041,17 @@ You will need an access token from the LDB service. This is free for reasonable 
 
 You will need the target service WSDL. At time of writing it's this: `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01`. The [same link](https://lite.realtime.nationalrail.co.uk/OpenLDBWS) minus the wsdl extension also contains documentation and will indicate what the current WSDL is. 
 
-For fastest use simply add the token and url to environment variables:
-```
-LDB_DARWIN_ACCESS_TOKEN=<your access token here>
-LDB_DARWIN_WSDL_URL=https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01
-```
-
-Now you can instantiate the service like so:
-
-```js
-import { Darwin } from 'darwin-ldb-node'
-
-const d = Darwin.make()
-await d.init()
-
-const results = await d.arrivalsAndDepartures({crs: 'NCL'})
-```
-
-Alternatively you can manually pass the url and access token to the supplied SOAP connector like so:
-
-```js
-import { Darwin, SoapConnector } from 'darwin-ldb-node'
-
-const d = new Darwin()
-d.connector = new SoapConnector(wsdlUrl, accessToken)
-await d.init()
-
-const results = await d.arrivalsAndDepartures({crs: 'NCL'})
-```
+Pass them into the static `Darwin.make` method to instantiate the SOAP connection.
 
 # Notes
 
 ## Stability
 
-`darwin-ldb-node` is written to make requests to and parse responses from the service defined by WSDL `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01`. If this service changes our results may vary and parsing / typing might break.
+In theory, SOAP (and WSDL) should always be able to describe the services available, in practice the services described do not accurately reflect the services available.
+
+As such, `darwin-ldb-node` is written to make requests to and parse responses from the service defined by WSDL `https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01` at the current time of writing.
+
+If this service changes (even at this dated version) typing can break.
 
 ## Accuracy
 
@@ -1103,7 +1075,7 @@ As a service can have multiple origins / destinations so to can it have variable
 
 See the `TrainService.callingPoints.to` object to see all calling points from the current queried board to the destination.
 
-For example if we've queried departures from KGX and a service has a destination of both YRK and NCL due to a train split at York:
+For example if we've queried departures from KGX and a service has a destination of both YRK and NCL due to a train split at York (where that half terminates at York):
 
 ```
 service.callingPoints.to.YRK // all calling points between KGX and YRK
