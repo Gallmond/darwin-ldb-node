@@ -1,5 +1,3 @@
-import type { ISoapError } from "soap/lib/client.js"
-
 class MethodNotFoundError extends Error{
   constructor(path: string){
     super(`No method found for ${path}`)
